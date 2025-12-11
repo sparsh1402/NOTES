@@ -27,6 +27,12 @@ This repository is a collection of structured notes covering various concepts, t
 - [Video 9: Serializable vs Repeatable Read](./notes/09_Serializable_vs_Repeatable_Read.md) - Critical difference between Serializable and Repeatable Read isolation levels, dependency detection, and when to use each
 - [Video 10: Eventual Consistency](./notes/10_Eventual_Consistency.md) - Understanding eventual consistency, difference between data consistency and read consistency, and why both SQL and NoSQL suffer from it
 
+### Database Storage
+- [Video 11: Tables and Indexes Storage](./notes/11_Tables_and_Indexes_Storage.md) - How tables and indexes are stored on disk, pages, I/O operations, heap vs index performance, and clustered indexes
+- [Video 12: Row vs Column Storage](./notes/12_Row_vs_Column_Storage.md) - Row-oriented vs column-oriented database storage, how each stores data on disk, query performance comparison, and when to use which
+- [Video 13: Primary Key vs Secondary Key](./notes/13_Primary_Key_vs_Secondary_Key.md) - Clustered index (primary key) vs secondary index, how tables are organized, database differences, and UUID problem
+- [Article 14: Database Pages](./notes/14_Database_Pages.md) - Deep dive into database pages, buffer pool, page content, storage methods, and PostgreSQL page layout
+
 *More topics will be added as course transcripts are processed.*
 
 ## Notes Structure
@@ -135,6 +141,54 @@ All detailed course notes are available in the [`notes/`](./notes/) directory.
    - Root cause: Data in multiple places (leader + followers, database + cache)
    - Solutions: Synchronous vs asynchronous replication
    - Real-world examples: PostgreSQL replicas, MongoDB replica sets, Redis caching
+
+11. **[Tables and Indexes Storage](./notes/11_Tables_and_Indexes_Storage.md)**
+   - Table logical view: Columns and rows
+   - Row ID concept: System-maintained unique identifier
+   - Pages: Fixed-size memory/disk locations (8 KB PostgreSQL, 16 KB MySQL)
+   - I/O operations: Reading pages (not rows or bytes)
+   - Heap: Collection of pages containing all table data
+   - Index: Separate data structure with pointers to heap
+   - B-trees: Tree structure used by indexes
+   - Query performance: Heap scan (333 I/O) vs Index lookup (2 I/O)
+   - Clustered indexes: Index-organized tables (MySQL) vs Secondary indexes (PostgreSQL)
+   - UUID problem with clustered indexes
+   - Database differences: MySQL vs PostgreSQL index behavior
+
+12. **[Row vs Column Storage](./notes/12_Row_vs_Column_Storage.md)**
+   - Row-oriented storage: How rows are stored contiguously on disk
+   - Column-oriented storage: How columns are stored separately on disk
+   - Query examples: Performance comparison for different query types
+   - Row-oriented: Great for SELECT *, multi-column queries, OLTP
+   - Column-oriented: Great for aggregation, single-column queries, OLAP
+   - Pros and cons of each storage model
+   - Compression: Column-oriented is much better
+   - When to use row-oriented vs column-oriented
+   - Hybrid approach: Storage engines per table
+   - Real-world examples: Banking (row) vs Analytics (column)
+
+13. **[Primary Key vs Secondary Key](./notes/13_Primary_Key_vs_Secondary_Key.md)**
+   - Primary Key (Clustered Index): Organizes table around the key
+   - Secondary Key (Secondary Index): Separate structure pointing to heap
+   - Heap (Table Space): Where table data is stored
+   - Clustering concept: Maintaining order in the table
+   - Range query benefits: Why clustered indexes are efficient
+   - UUID problem: Random keys kill performance in clustered indexes
+   - Database differences: MySQL (always clustered) vs PostgreSQL (all secondary) vs Oracle/SQL Server (optional)
+   - Index Organized Table (IOT) vs Heap Organized Table (HOT)
+   - Pros and cons: Clustered vs Secondary indexes
+   - When to use which: Sequential keys vs random keys
+
+14. **[Database Pages](./notes/14_Database_Pages.md)**
+   - Overview: Fixed-size pages as fundamental storage units
+   - Buffer Pool: How pages are cached in memory
+   - Page Content: Row-store vs column-store vs document vs graph storage
+   - Small vs Large Pages: Trade-offs and default page sizes
+   - Storage Methods: File per table (array of pages) approach
+   - PostgreSQL Page Layout: Page Header, ItemIds, Items, Special section
+   - HOT Optimization: Heap Only Tuple optimization explained
+   - ItemId Indirection: How tuples are referenced
+   - Performance Implications: Smaller rows = more rows per page = better I/O
 
 ---
 
