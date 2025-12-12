@@ -33,6 +33,11 @@ This repository is a collection of structured notes covering various concepts, t
 - [Video 13: Primary Key vs Secondary Key](./notes/13_Primary_Key_vs_Secondary_Key.md) - Clustered index (primary key) vs secondary index, how tables are organized, database differences, and UUID problem
 - [Article 14: Database Pages](./notes/14_Database_Pages.md) - Deep dive into database pages, buffer pool, page content, storage methods, and PostgreSQL page layout
 
+### Database Indexing
+- [Video 15: Create Postgres Table with Million Rows](./notes/15_Create_Postgres_Table_with_Million_Rows.md) - Practical guide to creating large test datasets using generate_series() and random() functions
+- [Video 16: Getting Started with Indexing](./notes/16_Getting_Started_with_Indexing.md) - Introduction to database indexing, performance comparison with/without indexes, EXPLAIN ANALYZE, and when indexes help
+- [Video 17: SQL Query Planner and Optimizer with EXPLAIN](./notes/17_SQL_Query_Planner_and_Optimizer_Explain.md) - Understanding EXPLAIN command, cost numbers, query plans, sequential scan vs index scan, and performance analysis
+
 *More topics will be added as course transcripts are processed.*
 
 ## Notes Structure
@@ -189,6 +194,47 @@ All detailed course notes are available in the [`notes/`](./notes/) directory.
    - HOT Optimization: Heap Only Tuple optimization explained
    - ItemId Indirection: How tuples are referenced
    - Performance Implications: Smaller rows = more rows per page = better I/O
+
+15. **[Create Postgres Table with Million Rows](./notes/15_Create_Postgres_Table_with_Million_Rows.md)**
+   - Setup: Docker and PostgreSQL container
+   - Creating tables for testing
+   - The generate_series() function: Generating number sequences
+   - The random() function: Creating random test data
+   - Inserting millions of rows efficiently
+   - Extending to multiple columns
+   - Creating character/string columns
+   - Performance considerations: With vs without indexes
+   - Use cases: Testing indexing, partitioning, performance benchmarking
+   - Tips and tricks for different scenarios
+
+16. **[Getting Started with Indexing](./notes/16_Getting_Started_with_Indexing.md)**
+   - What is an index: Phone book analogy
+   - Types of indexes: B-tree and LSM trees
+   - Test setup: Employees table with 11 million rows
+   - EXPLAIN ANALYZE: Understanding query execution plans
+   - Performance examples: Index scan vs sequential scan
+   - Inline queries (covering index): Fastest possible queries
+   - Heap fetch: When you need to go to the table
+   - Creating indexes: Building B-tree indexes
+   - The LIKE problem: When indexes don't help
+   - Best practices: When to create indexes, avoiding SELECT *
+   - Common mistakes: Assuming index is always used
+   - Performance comparison table
+
+17. **[SQL Query Planner and Optimizer with EXPLAIN](./notes/17_SQL_Query_Planner_and_Optimizer_Explain.md)**
+   - What is EXPLAIN: Understanding query execution plans
+   - Test setup: Grades table with 200+ million rows
+   - EXPLAIN output structure: Query plan, cost, rows, width
+   - Cost numbers: Startup cost vs total cost explained
+   - Sequential scan: Full table scan performance
+   - Parallel sequential scan: Multi-threaded scanning
+   - Index scan: Using indexes for faster queries
+   - Index only scan: Fastest possible queries (covering index)
+   - ORDER BY performance: Indexed vs non-indexed columns
+   - Width: Row size and network transfer implications
+   - Rows estimation: Using EXPLAIN for quick counts
+   - Best practices: When to use EXPLAIN, watching startup cost
+   - Important warnings: INTEGER primary key limit, EXPLAIN vs EXPLAIN ANALYZE
 
 ---
 
