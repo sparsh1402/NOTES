@@ -323,8 +323,16 @@ function initializeHighlighting() {
 function enableHighlighting() {
     const content = document.getElementById('content');
     
+    // Desktop events
     content.addEventListener('mouseup', handleTextSelection);
     document.addEventListener('mouseup', handleTextSelection);
+    
+    // Mobile/touch events
+    content.addEventListener('touchend', handleTextSelectionTouch, { passive: false });
+    document.addEventListener('touchend', handleTextSelectionTouch, { passive: false });
+    
+    // Also listen for selection changes (works on both desktop and mobile)
+    document.addEventListener('selectionchange', handleSelectionChange);
 }
 
 // Disable highlighting
@@ -332,20 +340,85 @@ function disableHighlighting() {
     const content = document.getElementById('content');
     content.removeEventListener('mouseup', handleTextSelection);
     document.removeEventListener('mouseup', handleTextSelection);
+    content.removeEventListener('touchend', handleTextSelectionTouch);
+    document.removeEventListener('touchend', handleTextSelectionTouch);
+    document.removeEventListener('selectionchange', handleSelectionChange);
     hideTooltip();
 }
 
-// Handle text selection
+// Handle text selection (desktop)
 function handleTextSelection(e) {
+    if (!highlightMode) return;
+    
+    // Small delay to ensure selection is complete
+    setTimeout(() => {
+        checkSelection(e);
+    }, 100);
+}
+
+// Handle text selection (mobile/touch)
+function handleTextSelectionTouch(e) {
+    if (!highlightMode) return;
+    
+    // Prevent default to allow text selection
+    // Don't prevent default immediately, let selection happen first
+    setTimeout(() => {
+        checkSelection(e);
+    }, 300);
+}
+
+// Handle selection change (works on both desktop and mobile)
+function handleSelectionChange() {
     if (!highlightMode) return;
     
     const selection = window.getSelection();
     const text = selection.toString().trim();
     
     if (text.length > 0) {
-        selectedText = text;
-        const range = selection.getRangeAt(0);
-        showTooltip(e, range);
+        try {
+            const range = selection.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            
+            // Only show tooltip if selection is in content area
+            const content = document.getElementById('content');
+            if (content.contains(range.commonAncestorContainer) || 
+                content.contains(range.commonAncestorContainer.parentElement)) {
+                showTooltip(null, range);
+            }
+        } catch (e) {
+            // Selection might be empty or invalid
+        }
+    } else {
+        // Hide tooltip after a delay (in case user is still selecting)
+        setTimeout(() => {
+            const selection = window.getSelection();
+            if (selection.toString().trim().length === 0) {
+                hideTooltip();
+            }
+        }, 500);
+    }
+}
+
+// Check selection and show tooltip
+function checkSelection(e) {
+    const selection = window.getSelection();
+    const text = selection.toString().trim();
+    
+    if (text.length > 0) {
+        try {
+            selectedText = text;
+            const range = selection.getRangeAt(0);
+            
+            // Only show tooltip if selection is in content area
+            const content = document.getElementById('content');
+            if (content.contains(range.commonAncestorContainer) || 
+                content.contains(range.commonAncestorContainer.parentElement)) {
+                showTooltip(e, range);
+            }
+        } catch (err) {
+            // Selection might be invalid
+            console.log('Selection error:', err);
+        }
     } else {
         hideTooltip();
     }
@@ -355,24 +428,94 @@ function handleTextSelection(e) {
 function showTooltip(e, range) {
     const tooltip = document.getElementById('highlightTooltip');
     const rect = range.getBoundingClientRect();
+    const tooltipWidth = 220; // Approximate width of tooltip
+    const tooltipHeight = 50;
+    
+    // Calculate position
+    let left = rect.left + rect.width / 2 - tooltipWidth / 2;
+    let top = rect.top - tooltipHeight - 10;
+    
+    // Adjust for mobile (position above selection, centered)
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // On mobile, center it and position above
+        left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
+        top = Math.max(10, rect.top - tooltipHeight - 10);
+        
+        // If not enough space above, position below
+        if (top < 10) {
+            top = rect.bottom + 10;
+        }
+    } else {
+        // Desktop: position above selection
+        left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
+        top = Math.max(10, top);
+    }
     
     tooltip.style.display = 'flex';
-    tooltip.style.left = `${rect.left + rect.width / 2 - 100}px`;
-    tooltip.style.top = `${rect.top - 50}px`;
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${top}px`;
+    tooltip.style.position = 'fixed';
+    tooltip.style.zIndex = '10000';
     
     // Add event listeners to tooltip buttons
     tooltip.querySelectorAll('.tooltip-btn').forEach(btn => {
-        btn.onclick = () => {
-            const color = btn.getAttribute('data-color');
-            if (color === 'remove') {
-                removeHighlight(range);
-            } else {
-                addHighlight(range, color);
+        // Remove old listeners
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const color = newBtn.getAttribute('data-color');
+            const selection = window.getSelection();
+            
+            if (selection.rangeCount > 0) {
+                const currentRange = selection.getRangeAt(0);
+                if (color === 'remove') {
+                    removeHighlight(currentRange);
+                } else {
+                    addHighlight(currentRange, color);
+                }
             }
             hideTooltip();
             window.getSelection().removeAllRanges();
-        };
+        });
+        
+        // Also support touch events
+        newBtn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const color = newBtn.getAttribute('data-color');
+            const selection = window.getSelection();
+            
+            if (selection.rangeCount > 0) {
+                const currentRange = selection.getRangeAt(0);
+                if (color === 'remove') {
+                    removeHighlight(currentRange);
+                } else {
+                    addHighlight(currentRange, color);
+                }
+            }
+            hideTooltip();
+            window.getSelection().removeAllRanges();
+        });
     });
+    
+    // Prevent clicks outside from hiding tooltip immediately
+    setTimeout(() => {
+        document.addEventListener('click', hideTooltipOnOutsideClick, { once: true });
+        document.addEventListener('touchstart', hideTooltipOnOutsideClick, { once: true });
+    }, 100);
+}
+
+// Hide tooltip when clicking outside
+function hideTooltipOnOutsideClick(e) {
+    const tooltip = document.getElementById('highlightTooltip');
+    if (tooltip && !tooltip.contains(e.target)) {
+        hideTooltip();
+    }
 }
 
 // Hide tooltip
@@ -382,14 +525,32 @@ function hideTooltip() {
 
 // Add highlight
 function addHighlight(range, color) {
+    // Make sure we have a valid range
+    if (!range || range.collapsed) {
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+            range = selection.getRangeAt(0);
+        } else {
+            return;
+        }
+    }
+    
     const span = document.createElement('span');
     span.className = `highlight highlight-${color}`;
     span.setAttribute('data-highlight-id', Date.now().toString());
     
     try {
+        // Check if range is valid
+        if (range.collapsed) {
+            return;
+        }
+        
         span.appendChild(range.extractContents());
         range.insertNode(span);
         saveHighlights();
+        
+        // Clear selection
+        window.getSelection().removeAllRanges();
     } catch (e) {
         console.error('Error adding highlight:', e);
     }
