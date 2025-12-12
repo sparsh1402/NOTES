@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBMS Notes - Database Management Systems</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">📚 DBMS Notes</h1>
+                <p class="subtitle">Database Management Systems</p>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <h3 class="nav-section-title">ACID Properties</h3>
+                    <ul class="nav-list" id="acid-properties">
+                        <!-- Populated by JavaScript -->
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Database Storage</h3>
+                    <ul class="nav-list" id="database-storage">
+                        <!-- Populated by JavaScript -->
+                    </ul>
+                </div>
+                <div class="nav-section">
+                    <h3 class="nav-section-title">Database Indexing</h3>
+                    <ul class="nav-list" id="database-indexing">
+                        <!-- Populated by JavaScript -->
+                    </ul>
+                </div>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-highlight-mode" id="highlightModeBtn">
+                    <span>✨</span> Highlight Mode
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="book-container">
+                <div class="book-page">
+                    <div class="page-header">
+                        <button class="btn-back" id="backBtn" style="display: none;">
+                            <span>←</span> Back
+                        </button>
+                        <div class="page-actions">
+                            <button class="btn-action" id="printBtn" title="Print">
+                                🖨️
+                            </button>
+                            <button class="btn-action" id="themeBtn" title="Toggle Theme">
+                                🌙
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="page-content" id="content">
+                        <div class="welcome-screen">
+                            <h1>Welcome to DBMS Notes</h1>
+                            <p class="lead">Comprehensive notes on Database Management Systems</p>
+                            <div class="welcome-features">
+                                <div class="feature-card">
+                                    <h3>📖 Book-like Reading</h3>
+                                    <p>Beautiful, distraction-free reading experience</p>
+                                </div>
+                                <div class="feature-card">
+                                    <h3>✨ Highlight Important Points</h3>
+                                    <p>Click and drag to highlight key concepts</p>
+                                </div>
+                                <div class="feature-card">
+                                    <h3>🔍 Easy Navigation</h3>
+                                    <p>Browse through all topics effortlessly</p>
+                                </div>
+                                <div class="feature-card">
+                                    <h3>💾 Persistent Highlights</h3>
+                                    <p>Your highlights are saved automatically</p>
+                                </div>
+                            </div>
+                            <div class="quick-start">
+                                <h3>Quick Start</h3>
+                                <p>Select a topic from the sidebar to begin reading</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="page-footer">
+                        <div class="page-info">
+                            <span id="currentPage">Home</span>
+                        </div>
+                        <div class="page-controls">
+                            <button class="btn-nav" id="prevBtn" disabled>← Previous</button>
+                            <button class="btn-nav" id="nextBtn">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Highlight Tooltip -->
+    <div class="highlight-tooltip" id="highlightTooltip" style="display: none;">
+        <button class="tooltip-btn" data-color="yellow">🟨</button>
+        <button class="tooltip-btn" data-color="blue">🟦</button>
+        <button class="tooltip-btn" data-color="green">🟩</button>
+        <button class="tooltip-btn" data-color="pink">🩷</button>
+        <button class="tooltip-btn" data-color="remove">✕</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
