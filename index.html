@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DBMS Notes - Database Management Systems</title>
+    <title>Study Notes - Comprehensive Learning Resources</title>
+    <!-- GitHub Pages rebuild trigger -->
     <style>
         html {
             scroll-behavior: smooth;
@@ -19,32 +20,21 @@
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1 class="logo">📚 DBMS Notes</h1>
-                <p class="subtitle">Database Management Systems</p>
+                <h1 class="logo">📚 Study Notes</h1>
+                <p class="subtitle">Comprehensive Learning Resources</p>
+                <div class="subject-selector-container">
+                    <label for="subjectSelector" class="subject-selector-label">Select Subject:</label>
+                    <select id="subjectSelector" class="subject-selector">
+                        <option value="">Choose a subject...</option>
+                    </select>
+                </div>
             </div>
             <nav class="nav-menu">
-                <div class="nav-section">
-                    <h3 class="nav-section-title">ACID Properties</h3>
-                    <ul class="nav-list" id="acid-properties">
-                        <!-- Populated by JavaScript -->
-                    </ul>
-                </div>
-                <div class="nav-section">
-                    <h3 class="nav-section-title">Database Storage</h3>
-                    <ul class="nav-list" id="database-storage">
-                        <!-- Populated by JavaScript -->
-                    </ul>
-                </div>
-                <div class="nav-section">
-                    <h3 class="nav-section-title">Database Indexing</h3>
-                    <ul class="nav-list" id="database-indexing">
-                        <!-- Populated by JavaScript -->
-                    </ul>
-                </div>
+                <!-- Populated by JavaScript based on selected subject -->
             </nav>
             <div class="sidebar-footer">
-                <button class="btn-highlight-mode" id="highlightModeBtn">
-                    <span>✨</span> Highlight Mode
+                <button class="btn-contact" id="contactBtn">
+                    <span>💬</span> Contact Me
                 </button>
             </div>
         </aside>
@@ -77,16 +67,16 @@
                                     <p>Beautiful, distraction-free reading experience</p>
                                 </div>
                             <div class="feature-card">
-                                <h3>✨ Highlight Important Points</h3>
-                                <p>Select text to highlight key concepts (works on desktop and mobile)</p>
+                                <h3>💬 Contact & Feedback</h3>
+                                <p>Have questions or feedback? Send me a message!</p>
                             </div>
                                 <div class="feature-card">
                                     <h3>🔍 Easy Navigation</h3>
                                     <p>Browse through all topics effortlessly</p>
                                 </div>
                                 <div class="feature-card">
-                                    <h3>💾 Persistent Highlights</h3>
-                                    <p>Your highlights are saved automatically</p>
+                                    <h3>📱 Responsive Design</h3>
+                                    <p>Works seamlessly on desktop and mobile devices</p>
                                 </div>
                             </div>
                             <div class="quick-start">
@@ -110,13 +100,43 @@
         </main>
     </div>
 
-    <!-- Highlight Tooltip -->
-    <div class="highlight-tooltip" id="highlightTooltip" style="display: none;">
-        <button class="tooltip-btn" data-color="yellow">🟨</button>
-        <button class="tooltip-btn" data-color="blue">🟦</button>
-        <button class="tooltip-btn" data-color="green">🟩</button>
-        <button class="tooltip-btn" data-color="pink">🩷</button>
-        <button class="tooltip-btn" data-color="remove">✕</button>
+    <!-- Contact Chatbox Modal -->
+    <div class="contact-modal" id="contactModal" style="display: none;">
+        <div class="contact-modal-overlay" id="contactModalOverlay"></div>
+        <div class="contact-modal-content">
+            <div class="contact-modal-header">
+                <h2>💬 Get in Touch</h2>
+                <button class="contact-modal-close" id="contactModalClose">✕</button>
+            </div>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input type="text" id="contactName" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Your Email</label>
+                    <input type="email" id="contactEmail" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">Subject</label>
+                    <input type="text" id="contactSubject" name="subject" required placeholder="What's this about?">
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" name="message" rows="6" required placeholder="Type your message here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="contactHoneypot" name="botcheck" style="display: none;">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loader" style="display: none;">⏳</span>
+                    </button>
+                </div>
+                <div id="formMessage" class="form-message" style="display: none;"></div>
+            </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>

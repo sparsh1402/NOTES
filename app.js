@@ -1,40 +1,107 @@
-// Notes data structure
+// Notes data structure organized by subject
 const notesData = {
-    'acid-properties': [
-        { id: '01', title: 'ACID Properties Introduction', file: 'notes/01_ACID_Properties_Introduction.md' },
-        { id: '02', title: 'What is a Transaction?', file: 'notes/02_What_is_a_Transaction.md' },
-        { id: '03', title: 'Atomicity', file: 'notes/03_Atomicity.md' },
-        { id: '04', title: 'Isolation', file: 'notes/04_Isolation.md' },
-        { id: '05', title: 'Consistency', file: 'notes/05_Consistency.md' },
-        { id: '06', title: 'Durability', file: 'notes/06_Durability.md' },
-        { id: '07', title: 'ACID Properties Hands-On', file: 'notes/07_ACID_Properties_Hands_On.md' },
-        { id: '08', title: 'Phantom Reads', file: 'notes/08_Phantom_Reads.md' },
-        { id: '09', title: 'Serializable vs Repeatable Read', file: 'notes/09_Serializable_vs_Repeatable_Read.md' },
-        { id: '10', title: 'Eventual Consistency', file: 'notes/10_Eventual_Consistency.md' }
-    ],
-    'database-storage': [
-        { id: '11', title: 'Tables and Indexes Storage', file: 'notes/11_Tables_and_Indexes_Storage.md' },
-        { id: '12', title: 'Row vs Column Storage', file: 'notes/12_Row_vs_Column_Storage.md' },
-        { id: '13', title: 'Primary Key vs Secondary Key', file: 'notes/13_Primary_Key_vs_Secondary_Key.md' },
-        { id: '14', title: 'Database Pages', file: 'notes/14_Database_Pages.md' }
-    ],
-    'database-indexing': [
-        { id: '15', title: 'Create Postgres Table with Million Rows', file: 'notes/15_Create_Postgres_Table_with_Million_Rows.md' },
-        { id: '16', title: 'Getting Started with Indexing', file: 'notes/16_Getting_Started_with_Indexing.md' },
-        { id: '17', title: 'SQL Query Planner and Optimizer', file: 'notes/17_SQL_Query_Planner_and_Optimizer_Explain.md' }
-    ]
+    'dbms': {
+        name: 'DBMS',
+        description: 'Database Management Systems',
+        icon: '🗄️',
+        sections: {
+            'acid-properties': [
+                { id: 'dbms-01', title: 'ACID Properties Introduction', file: 'notes/01_ACID_Properties_Introduction.md' },
+                { id: 'dbms-02', title: 'What is a Transaction?', file: 'notes/02_What_is_a_Transaction.md' },
+                { id: 'dbms-03', title: 'Atomicity', file: 'notes/03_Atomicity.md' },
+                { id: 'dbms-04', title: 'Isolation', file: 'notes/04_Isolation.md' },
+                { id: 'dbms-05', title: 'Consistency', file: 'notes/05_Consistency.md' },
+                { id: 'dbms-06', title: 'Durability', file: 'notes/06_Durability.md' },
+                { id: 'dbms-07', title: 'ACID Properties Hands-On', file: 'notes/07_ACID_Properties_Hands_On.md' },
+                { id: 'dbms-08', title: 'Phantom Reads', file: 'notes/08_Phantom_Reads.md' },
+                { id: 'dbms-09', title: 'Serializable vs Repeatable Read', file: 'notes/09_Serializable_vs_Repeatable_Read.md' },
+                { id: 'dbms-10', title: 'Eventual Consistency', file: 'notes/10_Eventual_Consistency.md' }
+            ],
+            'database-storage': [
+                { id: 'dbms-11', title: 'Tables and Indexes Storage', file: 'notes/11_Tables_and_Indexes_Storage.md' },
+                { id: 'dbms-12', title: 'Row vs Column Storage', file: 'notes/12_Row_vs_Column_Storage.md' },
+                { id: 'dbms-13', title: 'Primary Key vs Secondary Key', file: 'notes/13_Primary_Key_vs_Secondary_Key.md' },
+                { id: 'dbms-14', title: 'Database Pages', file: 'notes/14_Database_Pages.md' }
+            ],
+            'database-indexing': [
+                { id: 'dbms-15', title: 'Create Postgres Table with Million Rows', file: 'notes/15_Create_Postgres_Table_with_Million_Rows.md' },
+                { id: 'dbms-16', title: 'Getting Started with Indexing', file: 'notes/16_Getting_Started_with_Indexing.md' },
+                { id: 'dbms-17', title: 'SQL Query Planner and Optimizer', file: 'notes/17_SQL_Query_Planner_and_Optimizer_Explain.md' }
+            ]
+        }
+    },
+    'java': {
+        name: 'JAVA',
+        description: 'Java Programming Language',
+        icon: '☕',
+        sections: {
+            'basics': [
+                // Add your Java notes here
+                // Example: { id: 'java-01', title: 'Java Basics', file: 'notes/java/01_Java_Basics.md' }
+                // When you add notes, create a 'java' folder inside 'notes' and add your markdown files there
+            ]
+        }
+    },
+    'springboot': {
+        name: 'SpringBoot',
+        description: 'Spring Boot Framework',
+        icon: '🌱',
+        sections: {
+            'fundamentals': [
+                // Add your SpringBoot notes here
+                // Example: { id: 'springboot-01', title: 'SpringBoot Introduction', file: 'notes/springboot/01_SpringBoot_Introduction.md' }
+                // When you add notes, create a 'springboot' folder inside 'notes' and add your markdown files there
+            ]
+        }
+    },
+    'hld': {
+        name: 'HLD',
+        description: 'High Level Design',
+        icon: '🏗️',
+        sections: {
+            'design-patterns': [
+                // Add your HLD notes here
+                // Example: { id: 'hld-01', title: 'System Design Basics', file: 'notes/hld/01_System_Design_Basics.md' }
+                // When you add notes, create a 'hld' folder inside 'notes' and add your markdown files there
+            ]
+        }
+    },
+    'lld': {
+        name: 'LLD',
+        description: 'Low Level Design',
+        icon: '🔧',
+        sections: {
+            'design-principles': [
+                // Add your LLD notes here
+                // Example: { id: 'lld-01', title: 'Design Principles', file: 'notes/lld/01_Design_Principles.md' }
+                // When you add notes, create a 'lld' folder inside 'notes' and add your markdown files there
+            ]
+        }
+    }
 };
 
-// Flatten all notes for navigation
-const allNotes = [
-    ...notesData['acid-properties'],
-    ...notesData['database-storage'],
-    ...notesData['database-indexing']
-];
+// Get all subjects
+const subjects = Object.keys(notesData);
 
+// Current state
+let currentSubject = null;
 let currentNoteIndex = -1;
-let highlightMode = false;
-let selectedText = '';
+let currentNotes = [];
+
+// Web3Forms API Key
+// Get your free access key from: https://web3forms.com
+// Replace the value below with your actual access key
+const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY_HERE';
+
+// Get all notes for a subject
+function getAllNotesForSubject(subjectId) {
+    if (!notesData[subjectId]) return [];
+    const allNotes = [];
+    Object.values(notesData[subjectId].sections).forEach(sectionNotes => {
+        allNotes.push(...sectionNotes);
+    });
+    return allNotes;
+}
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,18 +110,37 @@ document.addEventListener('DOMContentLoaded', () => {
         showFileProtocolWarning();
     }
     
+    initializeSubjectSelector();
     initializeNavigation();
-    initializeHighlighting();
+    initializeContact();
     initializeTheme();
     initializePrint();
-    loadHighlights();
     
     // Handle URL hash for direct links
-    if (window.location.hash) {
-        const noteId = window.location.hash.substring(1);
-        const note = allNotes.find(n => n.id === noteId);
-        if (note) {
-            loadNote(note);
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+        // Check if it's a subject selector (e.g., #subject:dbms)
+        if (hash.startsWith('subject:')) {
+            const subjectId = hash.split(':')[1];
+            selectSubject(subjectId);
+        } else {
+            // It's a note ID, find which subject it belongs to
+            for (const subjectId of subjects) {
+                const notes = getAllNotesForSubject(subjectId);
+                const note = notes.find(n => n.id === hash);
+                if (note) {
+                    selectSubject(subjectId);
+                    setTimeout(() => loadNote(note), 100);
+                    break;
+                }
+            }
+        }
+    } else {
+        // Default to DBMS subject if available
+        if (subjects.includes('dbms')) {
+            selectSubject('dbms');
+        } else {
+            showWelcomeScreen();
         }
     }
 });
@@ -86,44 +172,137 @@ function showFileProtocolWarning() {
     }
 }
 
-// Initialize navigation
-function initializeNavigation() {
-    // Populate navigation menus
-    Object.keys(notesData).forEach(sectionId => {
-        const navList = document.getElementById(sectionId);
-        if (navList) {
-            notesData[sectionId].forEach(note => {
-                const li = document.createElement('li');
-                li.className = 'nav-item';
-                const a = document.createElement('a');
-                a.className = 'nav-link';
-                a.textContent = note.title;
-                a.href = `#${note.id}`;
-                a.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loadNote(note);
-                });
-                li.appendChild(a);
-                navList.appendChild(li);
-            });
+// Initialize subject selector
+function initializeSubjectSelector() {
+    const subjectSelector = document.getElementById('subjectSelector');
+    if (!subjectSelector) return;
+    
+    // Remove the placeholder option
+    subjectSelector.innerHTML = '';
+    
+    subjects.forEach(subjectId => {
+        const subject = notesData[subjectId];
+        const option = document.createElement('option');
+        option.value = subjectId;
+        option.textContent = `${subject.icon} ${subject.name}`;
+        subjectSelector.appendChild(option);
+    });
+    
+    subjectSelector.addEventListener('change', (e) => {
+        if (e.target.value) {
+            selectSubject(e.target.value);
         }
     });
+}
 
+// Select a subject
+function selectSubject(subjectId) {
+    if (!notesData[subjectId]) return;
+    
+    currentSubject = subjectId;
+    currentNotes = getAllNotesForSubject(subjectId);
+    currentNoteIndex = -1;
+    
+    // Update subject selector
+    const subjectSelector = document.getElementById('subjectSelector');
+    if (subjectSelector) {
+        subjectSelector.value = subjectId;
+    }
+    
+    // Update sidebar header
+    const subject = notesData[subjectId];
+    const logo = document.querySelector('.logo');
+    const subtitle = document.querySelector('.subtitle');
+    if (logo) logo.textContent = `${subject.icon} ${subject.name} Notes`;
+    if (subtitle) subtitle.textContent = subject.description;
+    
+    // Update navigation
+    updateNavigationMenu();
+    
+    // Show welcome screen for this subject
+    showSubjectWelcomeScreen(subjectId);
+    
+    // Update URL
+    window.history.pushState({}, '', `#subject:${subjectId}`);
+}
+
+// Update navigation menu for current subject
+function updateNavigationMenu() {
+    if (!currentSubject) return;
+    
+    const navMenu = document.querySelector('.nav-menu');
+    if (!navMenu) return;
+    
+    // Clear existing navigation
+    navMenu.innerHTML = '';
+    
+    // Add sections for current subject
+    const subject = notesData[currentSubject];
+    Object.keys(subject.sections).forEach(sectionId => {
+        const sectionNotes = subject.sections[sectionId];
+        if (sectionNotes.length === 0) return; // Skip empty sections
+        
+        const navSection = document.createElement('div');
+        navSection.className = 'nav-section';
+        
+        const sectionTitle = document.createElement('h3');
+        sectionTitle.className = 'nav-section-title';
+        sectionTitle.textContent = formatSectionTitle(sectionId);
+        
+        const navList = document.createElement('ul');
+        navList.className = 'nav-list';
+        navList.id = `${currentSubject}-${sectionId}`;
+        
+        sectionNotes.forEach(note => {
+            const li = document.createElement('li');
+            li.className = 'nav-item';
+            const a = document.createElement('a');
+            a.className = 'nav-link';
+            a.textContent = note.title;
+            a.href = `#${note.id}`;
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadNote(note);
+            });
+            li.appendChild(a);
+            navList.appendChild(li);
+        });
+        
+        navSection.appendChild(sectionTitle);
+        navSection.appendChild(navList);
+        navMenu.appendChild(navSection);
+    });
+}
+
+// Format section title (convert kebab-case to Title Case)
+function formatSectionTitle(sectionId) {
+    return sectionId
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
+
+// Initialize navigation
+function initializeNavigation() {
     // Navigation buttons
     document.getElementById('prevBtn').addEventListener('click', () => {
-        if (currentNoteIndex > 0) {
-            loadNote(allNotes[currentNoteIndex - 1]);
+        if (currentNoteIndex > 0 && currentNotes.length > 0) {
+            loadNote(currentNotes[currentNoteIndex - 1]);
         }
     });
 
     document.getElementById('nextBtn').addEventListener('click', () => {
-        if (currentNoteIndex < allNotes.length - 1) {
-            loadNote(allNotes[currentNoteIndex + 1]);
+        if (currentNoteIndex < currentNotes.length - 1 && currentNotes.length > 0) {
+            loadNote(currentNotes[currentNoteIndex + 1]);
         }
     });
 
     document.getElementById('backBtn').addEventListener('click', () => {
-        showWelcomeScreen();
+        if (currentSubject) {
+            showSubjectWelcomeScreen(currentSubject);
+        } else {
+            showWelcomeScreen();
+        }
     });
 }
 
@@ -200,16 +379,13 @@ async function loadNote(note) {
             document.getElementById('content').innerHTML = html;
             
             // Update navigation
-            currentNoteIndex = allNotes.findIndex(n => n.id === note.id);
+            currentNoteIndex = currentNotes.findIndex(n => n.id === note.id);
             updateNavigation();
             updateActiveLink(note.id);
             updatePageInfo(note.title);
             
             // Show back button
             document.getElementById('backBtn').style.display = 'block';
-            
-            // Apply saved highlights
-            applyHighlights();
             
             // Scroll to top with smooth animation
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -245,47 +421,129 @@ async function loadNote(note) {
     }
 }
 
-// Show welcome screen
+// Show welcome screen (all subjects)
 function showWelcomeScreen() {
+    currentSubject = null;
+    currentNoteIndex = -1;
+    currentNotes = [];
+    
+    const subjectsHtml = subjects.map(subjectId => {
+        const subject = notesData[subjectId];
+        const noteCount = getAllNotesForSubject(subjectId).length;
+        return `
+            <div class="subject-card" data-subject="${subjectId}">
+                <div class="subject-icon">${subject.icon}</div>
+                <h3>${subject.name}</h3>
+                <p>${subject.description}</p>
+                <div class="subject-stats">${noteCount} notes</div>
+            </div>
+        `;
+    }).join('');
+    
     document.getElementById('content').innerHTML = `
         <div class="welcome-screen">
-            <h1>Welcome to DBMS Notes</h1>
-            <p class="lead">Comprehensive notes on Database Management Systems</p>
+            <h1>📚 Study Notes</h1>
+            <p class="lead">Comprehensive notes on various topics</p>
+            <div class="subjects-grid">
+                ${subjectsHtml}
+            </div>
             <div class="welcome-features">
                 <div class="feature-card">
                     <h3>📖 Book-like Reading</h3>
                     <p>Beautiful, distraction-free reading experience</p>
                 </div>
                 <div class="feature-card">
-                    <h3>✨ Highlight Important Points</h3>
-                    <p>Click and drag to highlight key concepts</p>
+                    <h3>💬 Contact & Feedback</h3>
+                    <p>Have questions or feedback? Send me a message!</p>
                 </div>
                 <div class="feature-card">
                     <h3>🔍 Easy Navigation</h3>
                     <p>Browse through all topics effortlessly</p>
                 </div>
                 <div class="feature-card">
-                    <h3>💾 Persistent Highlights</h3>
-                    <p>Your highlights are saved automatically</p>
+                    <h3>📱 Responsive Design</h3>
+                    <p>Works seamlessly on desktop and mobile devices</p>
                 </div>
-            </div>
-            <div class="quick-start">
-                <h3>Quick Start</h3>
-                <p>Select a topic from the sidebar to begin reading</p>
             </div>
         </div>
     `;
-    currentNoteIndex = -1;
+    
+    // Add click handlers to subject cards
+    document.querySelectorAll('.subject-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const subjectId = card.getAttribute('data-subject');
+            selectSubject(subjectId);
+        });
+    });
+    
     updateNavigation();
     document.getElementById('backBtn').style.display = 'none';
     document.getElementById('currentPage').textContent = 'Home';
     window.history.pushState({}, '', window.location.pathname);
 }
 
+// Show welcome screen for a specific subject
+function showSubjectWelcomeScreen(subjectId) {
+    if (!notesData[subjectId]) return;
+    
+    const subject = notesData[subjectId];
+    const allNotes = getAllNotesForSubject(subjectId);
+    
+    const sectionsHtml = Object.keys(subject.sections).map(sectionId => {
+        const sectionNotes = subject.sections[sectionId];
+        if (sectionNotes.length === 0) return '';
+        
+        const notesList = sectionNotes.map(note => `
+            <li class="welcome-note-item">
+                <a href="#${note.id}" class="welcome-note-link">${note.title}</a>
+            </li>
+        `).join('');
+        
+        return `
+            <div class="welcome-section">
+                <h3>${formatSectionTitle(sectionId)}</h3>
+                <ul class="welcome-notes-list">
+                    ${notesList}
+                </ul>
+            </div>
+        `;
+    }).join('');
+    
+    document.getElementById('content').innerHTML = `
+        <div class="welcome-screen">
+            <h1>${subject.icon} ${subject.name} Notes</h1>
+            <p class="lead">${subject.description}</p>
+            ${sectionsHtml}
+            <div class="quick-start">
+                <h3>Quick Start</h3>
+                <p>Select a topic from the sidebar or above to begin reading</p>
+            </div>
+        </div>
+    `;
+    
+    // Add click handlers to note links
+    document.querySelectorAll('.welcome-note-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const noteId = link.getAttribute('href').substring(1);
+            const note = allNotes.find(n => n.id === noteId);
+            if (note) {
+                loadNote(note);
+            }
+        });
+    });
+    
+    currentNoteIndex = -1;
+    updateNavigation();
+    document.getElementById('backBtn').style.display = 'block';
+    document.getElementById('currentPage').textContent = `${subject.name} - Home`;
+    window.history.pushState({}, '', `#subject:${subjectId}`);
+}
+
 // Update navigation buttons
 function updateNavigation() {
-    document.getElementById('prevBtn').disabled = currentNoteIndex <= 0;
-    document.getElementById('nextBtn').disabled = currentNoteIndex >= allNotes.length - 1;
+    document.getElementById('prevBtn').disabled = currentNoteIndex <= 0 || currentNotes.length === 0;
+    document.getElementById('nextBtn').disabled = currentNoteIndex >= currentNotes.length - 1 || currentNotes.length === 0;
 }
 
 // Update active link
@@ -303,389 +561,104 @@ function updatePageInfo(title) {
     document.getElementById('currentPage').textContent = title;
 }
 
-// Initialize highlighting
-function initializeHighlighting() {
-    const highlightBtn = document.getElementById('highlightModeBtn');
-    highlightBtn.addEventListener('click', () => {
-        highlightMode = !highlightMode;
-        highlightBtn.classList.toggle('active', highlightMode);
-        document.body.classList.toggle('highlight-mode', highlightMode);
-        
-        if (highlightMode) {
-            enableHighlighting();
-        } else {
-            disableHighlighting();
-        }
-    });
-}
-
-// Enable highlighting
-function enableHighlighting() {
-    const content = document.getElementById('content');
+// Initialize contact form
+function initializeContact() {
+    const contactBtn = document.getElementById('contactBtn');
+    const contactModal = document.getElementById('contactModal');
+    const contactModalClose = document.getElementById('contactModalClose');
+    const contactModalOverlay = document.getElementById('contactModalOverlay');
+    const contactForm = document.getElementById('contactForm');
     
-    // Desktop events
-    content.addEventListener('mouseup', handleTextSelection);
-    document.addEventListener('mouseup', handleTextSelection);
-    
-    // Mobile/touch events
-    content.addEventListener('touchend', handleTextSelectionTouch, { passive: false });
-    document.addEventListener('touchend', handleTextSelectionTouch, { passive: false });
-    
-    // Also listen for selection changes (works on both desktop and mobile)
-    document.addEventListener('selectionchange', handleSelectionChange);
-}
-
-// Disable highlighting
-function disableHighlighting() {
-    const content = document.getElementById('content');
-    content.removeEventListener('mouseup', handleTextSelection);
-    document.removeEventListener('mouseup', handleTextSelection);
-    content.removeEventListener('touchend', handleTextSelectionTouch);
-    document.removeEventListener('touchend', handleTextSelectionTouch);
-    document.removeEventListener('selectionchange', handleSelectionChange);
-    hideTooltip();
-}
-
-// Handle text selection (desktop)
-function handleTextSelection(e) {
-    if (!highlightMode) return;
-    
-    // Small delay to ensure selection is complete
-    setTimeout(() => {
-        checkSelection(e);
-    }, 100);
-}
-
-// Handle text selection (mobile/touch)
-function handleTextSelectionTouch(e) {
-    if (!highlightMode) return;
-    
-    // Prevent default to allow text selection
-    // Don't prevent default immediately, let selection happen first
-    setTimeout(() => {
-        checkSelection(e);
-    }, 300);
-}
-
-// Handle selection change (works on both desktop and mobile)
-function handleSelectionChange() {
-    if (!highlightMode) return;
-    
-    const selection = window.getSelection();
-    const text = selection.toString().trim();
-    
-    if (text.length > 0) {
-        try {
-            const range = selection.getRangeAt(0);
-            const rect = range.getBoundingClientRect();
-            
-            // Only show tooltip if selection is in content area
-            const content = document.getElementById('content');
-            if (content.contains(range.commonAncestorContainer) || 
-                content.contains(range.commonAncestorContainer.parentElement)) {
-                showTooltip(null, range);
-            }
-        } catch (e) {
-            // Selection might be empty or invalid
-        }
-    } else {
-        // Hide tooltip after a delay (in case user is still selecting)
-        setTimeout(() => {
-            const selection = window.getSelection();
-            if (selection.toString().trim().length === 0) {
-                hideTooltip();
-            }
-        }, 500);
-    }
-}
-
-// Check selection and show tooltip
-function checkSelection(e) {
-    const selection = window.getSelection();
-    const text = selection.toString().trim();
-    
-    if (text.length > 0) {
-        try {
-            selectedText = text;
-            const range = selection.getRangeAt(0);
-            
-            // Only show tooltip if selection is in content area
-            const content = document.getElementById('content');
-            if (content.contains(range.commonAncestorContainer) || 
-                content.contains(range.commonAncestorContainer.parentElement)) {
-                showTooltip(e, range);
-            }
-        } catch (err) {
-            // Selection might be invalid
-            console.log('Selection error:', err);
-        }
-    } else {
-        hideTooltip();
-    }
-}
-
-// Show highlight tooltip
-function showTooltip(e, range) {
-    const tooltip = document.getElementById('highlightTooltip');
-    const rect = range.getBoundingClientRect();
-    const tooltipWidth = 220; // Approximate width of tooltip
-    const tooltipHeight = 50;
-    
-    // Calculate position
-    let left = rect.left + rect.width / 2 - tooltipWidth / 2;
-    let top = rect.top - tooltipHeight - 10;
-    
-    // Adjust for mobile (position above selection, centered)
-    const isMobile = window.innerWidth <= 768;
-    
-    if (isMobile) {
-        // On mobile, center it and position above
-        left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
-        top = Math.max(10, rect.top - tooltipHeight - 10);
-        
-        // If not enough space above, position below
-        if (top < 10) {
-            top = rect.bottom + 10;
-        }
-    } else {
-        // Desktop: position above selection
-        left = Math.max(10, Math.min(left, window.innerWidth - tooltipWidth - 10));
-        top = Math.max(10, top);
-    }
-    
-    tooltip.style.display = 'flex';
-    tooltip.style.left = `${left}px`;
-    tooltip.style.top = `${top}px`;
-    tooltip.style.position = 'fixed';
-    tooltip.style.zIndex = '10000';
-    
-    // Add event listeners to tooltip buttons
-    tooltip.querySelectorAll('.tooltip-btn').forEach(btn => {
-        // Remove old listeners
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
-        
-        newBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const color = newBtn.getAttribute('data-color');
-            const selection = window.getSelection();
-            
-            if (selection.rangeCount > 0) {
-                const currentRange = selection.getRangeAt(0);
-                if (color === 'remove') {
-                    removeHighlight(currentRange);
-                } else {
-                    addHighlight(currentRange, color);
-                }
-            }
-            hideTooltip();
-            window.getSelection().removeAllRanges();
-        });
-        
-        // Also support touch events
-        newBtn.addEventListener('touchend', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const color = newBtn.getAttribute('data-color');
-            const selection = window.getSelection();
-            
-            if (selection.rangeCount > 0) {
-                const currentRange = selection.getRangeAt(0);
-                if (color === 'remove') {
-                    removeHighlight(currentRange);
-                } else {
-                    addHighlight(currentRange, color);
-                }
-            }
-            hideTooltip();
-            window.getSelection().removeAllRanges();
-        });
+    // Open modal
+    contactBtn.addEventListener('click', () => {
+        contactModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
     });
     
-    // Prevent clicks outside from hiding tooltip immediately
-    setTimeout(() => {
-        document.addEventListener('click', hideTooltipOnOutsideClick, { once: true });
-        document.addEventListener('touchstart', hideTooltipOnOutsideClick, { once: true });
-    }, 100);
-}
-
-// Hide tooltip when clicking outside
-function hideTooltipOnOutsideClick(e) {
-    const tooltip = document.getElementById('highlightTooltip');
-    if (tooltip && !tooltip.contains(e.target)) {
-        hideTooltip();
+    // Close modal
+    function closeModal() {
+        contactModal.style.display = 'none';
+        document.body.style.overflow = '';
     }
-}
-
-// Hide tooltip
-function hideTooltip() {
-    document.getElementById('highlightTooltip').style.display = 'none';
-}
-
-// Add highlight
-function addHighlight(range, color) {
-    // Make sure we have a valid range
-    if (!range || range.collapsed) {
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-            range = selection.getRangeAt(0);
-        } else {
-            return;
+    
+    contactModalClose.addEventListener('click', closeModal);
+    contactModalOverlay.addEventListener('click', closeModal);
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && contactModal.style.display === 'flex') {
+            closeModal();
         }
-    }
+    });
     
-    const span = document.createElement('span');
-    span.className = `highlight highlight-${color}`;
-    span.setAttribute('data-highlight-id', Date.now().toString());
-    
-    try {
-        // Check if range is valid
-        if (range.collapsed) {
-            return;
-        }
+    // Handle form submission
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
         
-        span.appendChild(range.extractContents());
-        range.insertNode(span);
-        saveHighlights();
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoader = submitBtn.querySelector('.btn-loader');
+        const formMessage = document.getElementById('formMessage');
         
-        // Clear selection
-        window.getSelection().removeAllRanges();
-    } catch (e) {
-        console.error('Error adding highlight:', e);
-    }
-}
-
-// Remove highlight
-function removeHighlight(range) {
-    const parent = range.commonAncestorContainer.parentElement;
-    if (parent && parent.classList.contains('highlight')) {
-        const text = parent.textContent;
-        parent.outerHTML = text;
-        saveHighlights();
-    }
-}
-
-// Save highlights
-function saveHighlights() {
-    const content = document.getElementById('content');
-    const highlights = [];
-    
-    content.querySelectorAll('.highlight').forEach((el, index) => {
-        const color = Array.from(el.classList).find(c => c.startsWith('highlight-'))?.replace('highlight-', '');
-        if (color) {
-            highlights.push({
-                text: el.textContent,
-                color: color,
-                id: el.getAttribute('data-highlight-id') || index.toString()
+        // Disable submit button and show loading
+        submitBtn.disabled = true;
+        btnText.style.display = 'none';
+        btnLoader.style.display = 'inline-block';
+        formMessage.style.display = 'none';
+        
+        // Get form data
+        const formData = {
+            access_key: WEB3FORMS_ACCESS_KEY,
+            name: document.getElementById('contactName').value,
+            email: document.getElementById('contactEmail').value,
+            subject: document.getElementById('contactSubject').value,
+            message: document.getElementById('contactMessage').value,
+            botcheck: document.getElementById('contactHoneypot').checked
+        };
+        
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
-        }
-    });
-    
-    if (currentNoteIndex >= 0) {
-        const note = allNotes[currentNoteIndex];
-        const key = `highlights-${note.id}`;
-        localStorage.setItem(key, JSON.stringify(highlights));
-    }
-}
-
-// Load highlights
-function loadHighlights() {
-    if (currentNoteIndex >= 0) {
-        const note = allNotes[currentNoteIndex];
-        const key = `highlights-${note.id}`;
-        const saved = localStorage.getItem(key);
-        
-        if (saved) {
-            try {
-                const highlights = JSON.parse(saved);
-                // Highlights will be applied when content is loaded
-            } catch (e) {
-                console.error('Error loading highlights:', e);
-            }
-        }
-    }
-}
-
-// Apply highlights (after content is loaded)
-function applyHighlights() {
-    if (currentNoteIndex >= 0) {
-        const note = allNotes[currentNoteIndex];
-        const key = `highlights-${note.id}`;
-        const saved = localStorage.getItem(key);
-        
-        if (saved) {
-            try {
-                const highlights = JSON.parse(saved);
-                const content = document.getElementById('content');
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Show success message
+                formMessage.textContent = '✅ Message sent successfully! I\'ll get back to you soon.';
+                formMessage.className = 'form-message success';
+                formMessage.style.display = 'block';
                 
-                // Apply highlights by finding text and wrapping it
-                highlights.forEach(highlight => {
-                    const text = highlight.text;
-                    if (text && text.length > 0) {
-                        highlightTextInElement(content, text, highlight.color, highlight.id);
-                    }
-                });
-            } catch (e) {
-                console.error('Error applying highlights:', e);
+                // Reset form
+                contactForm.reset();
+                
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                    closeModal();
+                    formMessage.style.display = 'none';
+                }, 2000);
+            } else {
+                throw new Error(result.message || 'Failed to send message');
             }
-        }
-    }
-}
-
-// Helper function to highlight text in an element
-function highlightTextInElement(element, text, color, id) {
-    const walker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT,
-        {
-            acceptNode: function(node) {
-                // Skip if already inside a highlight
-                let parent = node.parentElement;
-                while (parent && parent !== element) {
-                    if (parent.classList.contains('highlight')) {
-                        return NodeFilter.FILTER_REJECT;
-                    }
-                    parent = parent.parentElement;
-                }
-                return NodeFilter.FILTER_ACCEPT;
-            }
-        },
-        false
-    );
-    
-    const textNodes = [];
-    let node;
-    while (node = walker.nextNode()) {
-        if (node.textContent.includes(text)) {
-            textNodes.push(node);
-        }
-    }
-    
-    textNodes.forEach(textNode => {
-        const parent = textNode.parentNode;
-        const fullText = textNode.textContent;
-        const index = fullText.indexOf(text);
-        
-        if (index !== -1) {
-            const before = fullText.substring(0, index);
-            const match = fullText.substring(index, index + text.length);
-            const after = fullText.substring(index + text.length);
-            
-            const span = document.createElement('span');
-            span.className = `highlight highlight-${color}`;
-            span.setAttribute('data-highlight-id', id);
-            span.textContent = match;
-            
-            const fragment = document.createDocumentFragment();
-            if (before) fragment.appendChild(document.createTextNode(before));
-            fragment.appendChild(span);
-            if (after) fragment.appendChild(document.createTextNode(after));
-            
-            parent.replaceChild(fragment, textNode);
+        } catch (error) {
+            console.error('Error sending message:', error);
+            formMessage.textContent = `❌ Error: ${error.message || 'Failed to send message. Please try again.'}`;
+            formMessage.className = 'form-message error';
+            formMessage.style.display = 'block';
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            btnText.style.display = 'inline-block';
+            btnLoader.style.display = 'none';
         }
     });
 }
+
 
 // Initialize theme
 function initializeTheme() {
@@ -712,14 +685,30 @@ function initializePrint() {
 
 // Handle browser back/forward
 window.addEventListener('popstate', () => {
-    if (window.location.hash) {
-        const noteId = window.location.hash.substring(1);
-        const note = allNotes.find(n => n.id === noteId);
-        if (note) {
-            loadNote(note);
+    const hash = window.location.hash.substring(1);
+    if (hash) {
+        if (hash.startsWith('subject:')) {
+            const subjectId = hash.split(':')[1];
+            selectSubject(subjectId);
+        } else {
+            // It's a note ID, find which subject it belongs to
+            for (const subjectId of subjects) {
+                const notes = getAllNotesForSubject(subjectId);
+                const note = notes.find(n => n.id === hash);
+                if (note) {
+                    selectSubject(subjectId);
+                    setTimeout(() => loadNote(note), 100);
+                    break;
+                }
+            }
         }
     } else {
-        showWelcomeScreen();
+        // Default to DBMS subject if available
+        if (subjects.includes('dbms')) {
+            selectSubject('dbms');
+        } else {
+            showWelcomeScreen();
+        }
     }
 });
 
