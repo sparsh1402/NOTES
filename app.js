@@ -91,7 +91,7 @@ let currentNotes = [];
 // Web3Forms API Key
 // Get your free access key from: https://web3forms.com
 // Replace the value below with your actual access key
-const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY_HERE';
+const WEB3FORMS_ACCESS_KEY = '2a413337-40d1-40e1-8349-1b397504c446';
 
 // Get all notes for a subject
 function getAllNotesForSubject(subjectId) {
