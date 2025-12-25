@@ -35,10 +35,8 @@ const notesData = {
         description: 'Java Programming Language',
         icon: '☕',
         sections: {
-            'basics': [
-                // Add your Java notes here
-                // Example: { id: 'java-01', title: 'Java Basics', file: 'notes/java/01_Java_Basics.md' }
-                // When you add notes, create a 'java' folder inside 'notes' and add your markdown files there
+            'oops-concepts': [
+                { id: 'java-01', title: 'OOPs Concepts In Java', file: 'notes/java/01_OOPs_Concepts.md' }
             ]
         }
     },
