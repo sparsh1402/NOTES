@@ -37,6 +37,9 @@ const notesData = {
         sections: {
             'oops-concepts': [
                 { id: 'java-01', title: 'OOPs Concepts In Java', file: 'notes/java/01_OOPs_Concepts.md' }
+            ],
+            'java-basics': [
+                { id: 'java-02', title: 'Java Overview', file: 'notes/java/02_Java_Overview.md' }
             ]
         }
     },
