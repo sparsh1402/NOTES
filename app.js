@@ -39,7 +39,8 @@ const notesData = {
                 { id: 'java-01', title: 'OOPs Concepts In Java', file: 'notes/java/01_OOPs_Concepts.md' }
             ],
             'java-basics': [
-                { id: 'java-02', title: 'Java Overview', file: 'notes/java/02_Java_Overview.md' }
+                { id: 'java-02', title: 'Java Overview', file: 'notes/java/02_Java_Overview.md' },
+                { id: 'java-03', title: 'Why One Public Class Per File?', file: 'notes/java/03_Why_One_Public_Class_Per_File.md' }
             ]
         }
     },
