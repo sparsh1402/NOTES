@@ -6,27 +6,27 @@ const notesData = {
         icon: '🗄️',
         sections: {
             'acid-properties': [
-                { id: 'dbms-01', title: 'ACID Properties Introduction', file: 'notes/01_ACID_Properties_Introduction.md' },
-                { id: 'dbms-02', title: 'What is a Transaction?', file: 'notes/02_What_is_a_Transaction.md' },
-                { id: 'dbms-03', title: 'Atomicity', file: 'notes/03_Atomicity.md' },
-                { id: 'dbms-04', title: 'Isolation', file: 'notes/04_Isolation.md' },
-                { id: 'dbms-05', title: 'Consistency', file: 'notes/05_Consistency.md' },
-                { id: 'dbms-06', title: 'Durability', file: 'notes/06_Durability.md' },
-                { id: 'dbms-07', title: 'ACID Properties Hands-On', file: 'notes/07_ACID_Properties_Hands_On.md' },
-                { id: 'dbms-08', title: 'Phantom Reads', file: 'notes/08_Phantom_Reads.md' },
-                { id: 'dbms-09', title: 'Serializable vs Repeatable Read', file: 'notes/09_Serializable_vs_Repeatable_Read.md' },
-                { id: 'dbms-10', title: 'Eventual Consistency', file: 'notes/10_Eventual_Consistency.md' }
+                { id: 'dbms-01', title: 'ACID Properties Introduction', file: 'notes/dbms/01_ACID_Properties_Introduction.md' },
+                { id: 'dbms-02', title: 'What is a Transaction?', file: 'notes/dbms/02_What_is_a_Transaction.md' },
+                { id: 'dbms-03', title: 'Atomicity', file: 'notes/dbms/03_Atomicity.md' },
+                { id: 'dbms-04', title: 'Isolation', file: 'notes/dbms/04_Isolation.md' },
+                { id: 'dbms-05', title: 'Consistency', file: 'notes/dbms/05_Consistency.md' },
+                { id: 'dbms-06', title: 'Durability', file: 'notes/dbms/06_Durability.md' },
+                { id: 'dbms-07', title: 'ACID Properties Hands-On', file: 'notes/dbms/07_ACID_Properties_Hands_On.md' },
+                { id: 'dbms-08', title: 'Phantom Reads', file: 'notes/dbms/08_Phantom_Reads.md' },
+                { id: 'dbms-09', title: 'Serializable vs Repeatable Read', file: 'notes/dbms/09_Serializable_vs_Repeatable_Read.md' },
+                { id: 'dbms-10', title: 'Eventual Consistency', file: 'notes/dbms/10_Eventual_Consistency.md' }
             ],
             'database-storage': [
-                { id: 'dbms-11', title: 'Tables and Indexes Storage', file: 'notes/11_Tables_and_Indexes_Storage.md' },
-                { id: 'dbms-12', title: 'Row vs Column Storage', file: 'notes/12_Row_vs_Column_Storage.md' },
-                { id: 'dbms-13', title: 'Primary Key vs Secondary Key', file: 'notes/13_Primary_Key_vs_Secondary_Key.md' },
-                { id: 'dbms-14', title: 'Database Pages', file: 'notes/14_Database_Pages.md' }
+                { id: 'dbms-11', title: 'Tables and Indexes Storage', file: 'notes/dbms/11_Tables_and_Indexes_Storage.md' },
+                { id: 'dbms-12', title: 'Row vs Column Storage', file: 'notes/dbms/12_Row_vs_Column_Storage.md' },
+                { id: 'dbms-13', title: 'Primary Key vs Secondary Key', file: 'notes/dbms/13_Primary_Key_vs_Secondary_Key.md' },
+                { id: 'dbms-14', title: 'Database Pages', file: 'notes/dbms/14_Database_Pages.md' }
             ],
             'database-indexing': [
-                { id: 'dbms-15', title: 'Create Postgres Table with Million Rows', file: 'notes/15_Create_Postgres_Table_with_Million_Rows.md' },
-                { id: 'dbms-16', title: 'Getting Started with Indexing', file: 'notes/16_Getting_Started_with_Indexing.md' },
-                { id: 'dbms-17', title: 'SQL Query Planner and Optimizer', file: 'notes/17_SQL_Query_Planner_and_Optimizer_Explain.md' }
+                { id: 'dbms-15', title: 'Create Postgres Table with Million Rows', file: 'notes/dbms/15_Create_Postgres_Table_with_Million_Rows.md' },
+                { id: 'dbms-16', title: 'Getting Started with Indexing', file: 'notes/dbms/16_Getting_Started_with_Indexing.md' },
+                { id: 'dbms-17', title: 'SQL Query Planner and Optimizer', file: 'notes/dbms/17_SQL_Query_Planner_and_Optimizer_Explain.md' }
             ]
         }
     },
@@ -40,7 +40,17 @@ const notesData = {
             ],
             'java-basics': [
                 { id: 'java-02', title: 'Java Overview', file: 'notes/java/02_Java_Overview.md' },
-                { id: 'java-03', title: 'Why One Public Class Per File?', file: 'notes/java/03_Why_One_Public_Class_Per_File.md' }
+                { id: 'java-03', title: 'Why One Public Class Per File?', file: 'notes/java/03_Why_One_Public_Class_Per_File.md' },
+                { id: 'java-04', title: 'Java Variables', file: 'notes/java/04_Java_Variables.md' },
+                { id: 'java-05', title: 'Java Methods', file: 'notes/java/05_Java_Methods.md' },
+                { id: 'java-06', title: 'Java Constructors', file: 'notes/java/06_Java_Constructors.md' }
+            ],
+            'java-memory-management': [
+                { id: 'java-07', title: 'Java Memory Management', file: 'notes/java/07_Java_Memory_Management.md' }
+            ],
+            'java-advanced-classes': [
+                { id: 'java-08', title: 'Java Types of Classes - Part 1', file: 'notes/java/08_Java_Types_of_Classes_Part1.md' },
+                { id: 'java-09', title: 'Java Generic Classes', file: 'notes/java/09_Java_Generic_Classes.md' }
             ]
         }
     },
@@ -371,7 +381,40 @@ async function loadNote(note) {
             throw new Error('File is empty');
         }
         
-        const html = marked.parse(markdown);
+        // Configure marked.js to generate heading IDs
+        marked.setOptions({
+            headerIds: true,
+            mangle: false
+        });
+        
+        let html = marked.parse(markdown);
+        
+        // Post-process HTML to ensure all headings have IDs that match link format
+        // Use a temporary DOM element to parse and modify HTML properly
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        
+        // Find all headings and add/update IDs
+        const headings = tempDiv.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        headings.forEach(heading => {
+            // Get text content (handles nested HTML)
+            const textContent = heading.textContent || heading.innerText || '';
+            
+            // Generate ID from text content
+            const id = textContent
+                .toLowerCase()
+                .trim()
+                .replace(/[^\w\s-]/g, '') // Remove special characters
+                .replace(/\s+/g, '-')      // Replace spaces with hyphens
+                .replace(/-+/g, '-')       // Replace multiple hyphens with single
+                .replace(/^-+|-+$/g, '');  // Remove leading/trailing hyphens
+            
+            // Set the ID
+            heading.id = id;
+        });
+        
+        // Get the updated HTML
+        html = tempDiv.innerHTML;
         
         // Add loading state
         document.getElementById('content').innerHTML = '<div style="text-align: center; padding: 3rem;"><div style="display: inline-block; width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite;"></div></div>';
@@ -379,6 +422,12 @@ async function loadNote(note) {
         // Small delay for smooth transition
         setTimeout(() => {
             document.getElementById('content').innerHTML = html;
+            
+            // Add anchor link click handlers for table of contents
+            // Use a small delay to ensure DOM is fully updated
+            setTimeout(() => {
+                setupAnchorLinks();
+            }, 50);
             
             // Update navigation
             currentNoteIndex = currentNotes.findIndex(n => n.id === note.id);
@@ -389,10 +438,33 @@ async function loadNote(note) {
             // Show back button
             document.getElementById('backBtn').style.display = 'block';
             
-            // Scroll to top with smooth animation
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Check if URL has an anchor hash for a section within this note
+            const urlHash = window.location.hash;
+            if (urlHash && urlHash.startsWith('#')) {
+                const hashValue = urlHash.substring(1);
+                
+                // Check if hash contains note ID and section (format: noteId-sectionId)
+                if (hashValue.includes('-') && hashValue.startsWith(note.id + '-')) {
+                    const sectionId = hashValue.substring(note.id.length + 1);
+                    // Try to scroll to the section after a short delay to ensure DOM is ready
+                    setTimeout(() => {
+                        scrollToSection(sectionId);
+                    }, 300);
+                } else if (hashValue === note.id) {
+                    // Scroll to top if it's just the note ID
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // Might be just a section ID, try to scroll to it
+                    setTimeout(() => {
+                        scrollToSection(hashValue);
+                    }, 300);
+                }
+            } else {
+                // Scroll to top with smooth animation
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
             
-            // Update URL
+            // Update URL to note ID (section hash will be handled by anchor clicks)
             window.history.pushState({}, '', `#${note.id}`);
         }, 150);
     } catch (error) {
@@ -561,6 +633,85 @@ function updateActiveLink(noteId) {
 // Update page info
 function updatePageInfo(title) {
     document.getElementById('currentPage').textContent = title;
+}
+
+// Scroll to a specific section by ID
+function scrollToSection(sectionId) {
+    if (!sectionId) return;
+    
+    // Try to find the element, with a retry mechanism
+    let targetElement = document.getElementById(sectionId);
+    
+    // If not found immediately, try again after a short delay (for dynamically loaded content)
+    if (!targetElement) {
+        setTimeout(() => {
+            targetElement = document.getElementById(sectionId);
+            if (targetElement) {
+                performScroll(targetElement);
+            }
+        }, 100);
+        return;
+    }
+    
+    performScroll(targetElement);
+}
+
+// Helper function to perform the actual scroll
+function performScroll(targetElement) {
+    if (!targetElement) return;
+    
+    // Calculate offset to account for fixed header if any
+    const offset = 20; // Adjust this value if you have a fixed header
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    
+    // Smooth scroll to target
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Setup anchor links for table of contents
+function setupAnchorLinks() {
+    const content = document.getElementById('content');
+    if (!content) return;
+    
+    // Find all anchor links (especially in table of contents)
+    const anchorLinks = content.querySelectorAll('a[href^="#"]');
+    
+    anchorLinks.forEach(link => {
+        // Check if listener already added (using data attribute)
+        if (link.dataset.anchorHandlerAdded) {
+            return; // Already has handler
+        }
+        
+        // Mark as having handler
+        link.dataset.anchorHandlerAdded = 'true';
+        
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const href = link.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+            
+            const targetId = href.substring(1); // Remove #
+            if (!targetId) return;
+            
+            // Scroll to the section
+            scrollToSection(targetId);
+            
+            // Update URL hash - preserve note ID if present
+            if (currentNoteIndex >= 0 && currentNotes.length > 0) {
+                const currentNote = currentNotes[currentNoteIndex];
+                // Update URL to include both note ID and section: #noteId-sectionId
+                window.history.pushState(null, null, `#${currentNote.id}-${targetId}`);
+            } else {
+                window.history.pushState(null, null, `#${targetId}`);
+            }
+        });
+    });
 }
 
 // Initialize contact form

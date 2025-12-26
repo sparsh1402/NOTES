@@ -723,6 +723,32 @@ body {
     font-weight: 500;
 }
 
+/* Links in page content - better visibility */
+.page-content a {
+    color: #7bb3ff; /* Lighter blue for better visibility */
+    text-decoration: none;
+    border-bottom: 1px solid rgba(123, 179, 255, 0.3);
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.page-content a:hover {
+    color: #9cc5ff; /* Even lighter on hover */
+    border-bottom-color: #7bb3ff;
+    border-bottom-width: 2px;
+}
+
+/* Light theme link colors */
+[data-theme="light"] .page-content a {
+    color: #0066cc; /* Darker blue for light theme */
+    border-bottom-color: rgba(0, 102, 204, 0.3);
+}
+
+[data-theme="light"] .page-content a:hover {
+    color: #0052a3; /* Darker on hover for light theme */
+    border-bottom-color: #0066cc;
+}
+
 /* Welcome Screen */
 .welcome-screen {
     text-align: center;
