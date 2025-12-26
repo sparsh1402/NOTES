@@ -4,9 +4,7 @@ This repository contains comprehensive notes on **Database Management Systems (D
 
 ## 🌐 Live Website
 
-Visit the live website: **[https://yourusername.github.io/Notesss/](https://sparsh1402.github.io/NOTES)**
-
-> **Note:** Replace `yourusername` with your actual GitHub username after deployment.
+Visit the live website: **[https://sparsh1402.github.io/NOTES/](https://sparsh1402.github.io/NOTES)**
 
 **📖 Deployment Guide:** See [DEPLOY_GITHUB_WEB.md](./DEPLOY_GITHUB_WEB.md) for step-by-step instructions using GitHub web interface.
 
@@ -233,5 +231,6 @@ This project is open source and available for educational purposes.
 
 ---
 
-*Last updated: December 2024*
+*Last updated: December 2025*
+
 
