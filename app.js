@@ -50,7 +50,51 @@ const notesData = {
             ],
             'java-advanced-classes': [
                 { id: 'java-08', title: 'Java Types of Classes - Part 1', file: 'notes/java/08_Java_Types_of_Classes_Part1.md' },
-                { id: 'java-09', title: 'Java Generic Classes', file: 'notes/java/09_Java_Generic_Classes.md' }
+                { id: 'java-09', title: 'Java Generic Classes', file: 'notes/java/09_Java_Generic_Classes.md' },
+                { id: 'java-10', title: 'Java POJOs, Enums, and Final Classes', file: 'notes/java/10_Java_POJOs_Enums_Final_Classes.md' },
+                { id: 'java-11', title: 'Java Singleton, Immutable, and Wrapper Classes', file: 'notes/java/11_Java_Singleton_Immutable_Wrapper_Classes.md' }
+            ],
+            'java-interfaces': [
+                { id: 'java-12', title: 'Java Interfaces - Part 1', file: 'notes/java/12_Java_Interfaces_Part1.md' },
+                { id: 'java-13', title: 'Java Interfaces - Part 2: Java 8 & 9 Features', file: 'notes/java/13_Java_Interfaces_Part2_Java8_Java9_Features.md' }
+            ],
+            'java-functional-programming': [
+                { id: 'java-14', title: 'Java Functional Interface and Lambda Expression', file: 'notes/java/14_Java_Functional_Interface_Lambda_Expression.md' }
+            ],
+            'java-advanced-topics': [
+                { id: 'java-15', title: 'Java Reflection', file: 'notes/java/15_Java_Reflection.md' },
+                { id: 'java-16', title: 'Java Annotations', file: 'notes/java/16_Java_Annotations.md' },
+                { id: 'java-17', title: 'Java Exception Handling', file: 'notes/java/17_Java_Exception_Handling.md' },
+                { id: 'java-18', title: 'Java Operators', file: 'notes/java/18_Java_Operators.md' },
+                { id: 'java-19', title: 'Java Control Flow Statements', file: 'notes/java/19_Java_Control_Flow_Statements.md' }
+            ],
+            'java-collections': [
+                { id: 'java-20', title: 'Java Collection Framework - Introduction', file: 'notes/java/20_Java_Collection_Framework_Introduction.md' },
+                { id: 'java-21', title: 'Java Queue, PriorityQueue, Comparator, and Comparable', file: 'notes/java/21_Java_Queue_PriorityQueue_Comparator_Comparable.md' },
+                { id: 'java-22', title: 'Java Deque, List Implementations', file: 'notes/java/22_Java_Deque_List_Implementations.md' },
+                { id: 'java-23', title: 'Java Map and HashMap Internals', file: 'notes/java/23_Java_Map_HashMap_Internals.md' },
+                { id: 'java-24', title: 'Java LinkedHashMap and TreeMap', file: 'notes/java/24_Java_LinkedHashMap_TreeMap.md' },
+                { id: 'java-25', title: 'Java Set Implementations', file: 'notes/java/25_Java_Set_Implementations.md' },
+                { id: 'java-26', title: 'Java Streams', file: 'notes/java/26_Java_Streams.md' }
+            ],
+            'java-threading': [
+                { id: 'java-27', title: 'Java Threading - Part 1: Introduction, Process, and Thread', file: 'notes/java/27_Java_Threading_Part1_Introduction_Process_Thread.md' },
+                { id: 'java-28', title: 'Java Threading - Part 2: Thread Creation, Synchronization', file: 'notes/java/28_Java_Threading_Part2_Creation_Synchronization.md' },
+                { id: 'java-29', title: 'Java Threading - Part 3: Deprecated Methods, Join, Priority, Daemon', file: 'notes/java/29_Java_Threading_Part3_Deprecated_Methods_Join_Priority_Daemon.md' },
+                { id: 'java-30', title: 'Java Threading - Part 4: Locks (Reentrant, Read-Write, Semaphore)', file: 'notes/java/30_Java_Threading_Part4_Locks_Reentrant_ReadWrite_Semaphore.md' },
+                { id: 'java-31', title: 'Java Threading - Part 5: Atomic Variables and Volatile', file: 'notes/java/31_Java_Threading_Part5_Atomic_Variables_Volatile.md' },
+                { id: 'java-32', title: 'Java Threading - Part 6: Thread Pool Executor', file: 'notes/java/32_Java_Threading_Part6_Thread_Pool_Executor.md' },
+                { id: 'java-33', title: 'Java Threading - Part 7: Future, Callable, and CompletableFuture', file: 'notes/java/33_Java_Threading_Part7_Future_Callable_CompletableFuture.md' },
+                { id: 'java-34', title: 'Java Threading - Part 8: Executors Utility and Fork-Join Pool', file: 'notes/java/34_Java_Threading_Part8_Executors_Utility_ForkJoinPool.md' },
+                { id: 'java-35', title: 'Java Threading - Part 9: Shutdown, Scheduled Executor, ThreadLocal, Virtual Threads', file: 'notes/java/35_Java_Threading_Part9_Shutdown_ScheduledExecutor_ThreadLocal_VirtualThreads.md' }
+            ],
+            'java-modern-features': [
+                { id: 'java-36', title: 'Java Lombok Library', file: 'notes/java/36_Java_Lombok_Library.md' },
+                { id: 'java-37', title: 'Java 21: Sequence Collections', file: 'notes/java/37_Java_21_Sequence_Collections.md' },
+                { id: 'java-38', title: 'Java 17: Sealed Classes and Interfaces', file: 'notes/java/38_Java_17_Sealed_Classes_Interfaces.md' },
+                { id: 'java-39', title: 'Java 14: Switch Enhancements', file: 'notes/java/39_Java_14_Switch_Enhancements.md' },
+                { id: 'java-40', title: 'Java Pattern Matching: instanceof (Java 16) and Switch (Java 21)', file: 'notes/java/40_Java_Pattern_Matching_Instanceof_Switch.md' },
+                { id: 'java-41', title: 'Java 16: Records', file: 'notes/java/41_Java_16_Records.md' }
             ]
         }
     },
