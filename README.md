@@ -6,7 +6,7 @@ This repository contains comprehensive notes on **Database Management Systems (D
 
 Visit the live website: **[https://sparsh1402.github.io/NOTES/](https://sparsh1402.github.io/NOTES)**
 
-**📖 Deployment Guide:** See [DEPLOY_GITHUB_WEB.md](./DEPLOY_GITHUB_WEB.md) for step-by-step instructions using GitHub web interface.
+**📖 Deployment Guide:** See [docs/DEPLOY_GITHUB_WEB.md](./docs/DEPLOY_GITHUB_WEB.md) for step-by-step instructions using GitHub web interface.
 
 ## ✨ Features
 
@@ -138,8 +138,8 @@ Short revision notes for solved interview problems: pattern, core steps, key ins
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/Notesss.git
-cd Notesss/NOTES
+git clone https://github.com/sparsh1402/NOTES.git
+cd NOTES
 ```
 
 2. Serve locally (using Python):
@@ -207,12 +207,12 @@ This site is configured for GitHub Pages. To deploy:
 
 1. Push to `main` branch
 2. GitHub Actions will automatically deploy
-3. Site will be available at: `https://yourusername.github.io/Notesss/`
+3. Site will be available at: `https://sparsh1402.github.io/NOTES/`
 
 Or manually enable GitHub Pages:
 1. Go to Settings → Pages
 2. Select source: `main` branch
-3. Select folder: `/NOTES` (or root if configured)
+3. Select folder: `/ (root)`
 4. Save
 
 ## 📊 Statistics
@@ -240,6 +240,6 @@ This project is open source and available for educational purposes.
 
 ---
 
-*Last updated: December 2025*
+*Last updated: October 2026*
 
 
