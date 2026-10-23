@@ -10,15 +10,14 @@ Visit the live website: **[https://sparsh1402.github.io/NOTES/](https://sparsh14
 
 ## ✨ Features
 
-- 📖 **Book-like Reading Experience** - Beautiful, distraction-free interface
-- ✨ **Highlight Important Points** - Click and drag to highlight key concepts with multiple colors
-- 💾 **Persistent Highlights** - Your highlights are saved automatically
-- 🌙 **Dark/Light Theme** - Toggle between themes
-- 🔍 **Easy Navigation** - Browse through all topics effortlessly
-- 📱 **Responsive Design** - Works on all devices
-- 🖨️ **Print Friendly** - Clean print layout
-- 🔗 **Table of Contents** - Quick navigation within each note
-- 📚 **Organized by Subjects** - DBMS, Java, and more
+- 🔍 **Search** - press `Ctrl K` (or `/`) to find any note across all subjects
+- 🎨 **Subject colours** - DBMS, Java and DSA each have their own colour, so you always know where you are
+- 📖 **Comfortable reading** - serif body text in a 70-character column, reading progress bar, previous/next links
+- 💻 **Code blocks** - syntax highlighting with a one-click copy button
+- 🌙 **Dark/Light theme** - remembered between visits
+- 📱 **Responsive** - slide-out navigation on phones
+- 🖨️ **Print friendly** - clean print layout
+- 🔗 **Direct links** - every note and section has its own URL
 
 ## 📚 Subjects Covered
 
@@ -124,15 +123,11 @@ Short revision notes for solved interview problems: pattern, core steps, key ins
 
 ### Using the Website
 
-1. **Navigate:** Click on any subject (DBMS, Java, DSA) in the sidebar, then select a topic
-2. **Highlight:** 
-   - Click the "✨ Highlight Mode" button
-   - Select text you want to highlight
-   - Choose a color (yellow, blue, green, pink)
-   - Your highlights are saved automatically
-3. **Theme:** Toggle between dark and light themes
-4. **Navigation:** Use Previous/Next buttons or sidebar links
-5. **Table of Contents:** Click on any heading in the TOC to jump to that section
+1. **Navigate:** Pick a subject tab (DBMS, Java, DSA) in the sidebar, then select a topic
+2. **Search:** Press `Ctrl K` (or `/`), type part of a topic, use ↑/↓ and Enter to open it
+3. **Theme:** Toggle between dark and light themes with the sun/moon button
+4. **Navigation:** Use the Previous/Next links at the bottom of a note, or the sidebar
+5. **Table of Contents:** Click any entry to jump to that section
 
 ### Local Development
 
@@ -171,13 +166,11 @@ Notes are organized in a structured format with:
 
 ## 🎨 Features in Detail
 
-### Highlighting System
+### Search
 
-- **Enable Highlight Mode:** Click the "✨ Highlight Mode" button
-- **Select Text:** Click and drag to select text
-- **Choose Color:** Click on a color button (yellow, blue, green, pink)
-- **Remove Highlight:** Click the ✕ button
-- **Persistent:** Highlights are saved in browser localStorage
+- **Open:** `Ctrl K`, `/`, or the search box in the top bar
+- **Scope:** Searches note titles, section names and subjects across DBMS, Java and DSA
+- **Empty search:** Lists every note in the current subject
 
 ### Theme System
 
@@ -189,7 +182,7 @@ Notes are organized in a structured format with:
 
 - **Sidebar:** Quick access to all subjects and topics
 - **Previous/Next:** Navigate between notes sequentially
-- **Back Button:** Return to home screen
+- **Breadcrumbs:** Click the subject name to return to its overview
 - **URL Hash:** Direct links to specific notes and sections
 - **Table of Contents:** Jump to any section within a note
 
@@ -197,8 +190,9 @@ Notes are organized in a structured format with:
 
 - **HTML5** - Structure
 - **CSS3** - Styling (with CSS variables for theming)
-- **JavaScript** - Interactivity and highlighting
-- **Marked.js** - Markdown to HTML conversion
+- **JavaScript** - Navigation, search and theming
+- **Marked.js** - Markdown to HTML conversion
+- **highlight.js** - Code syntax highlighting
 - **GitHub Pages** - Hosting
 
 ## 📦 Deployment
