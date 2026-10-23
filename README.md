@@ -110,13 +110,21 @@ Visit the live website: **[https://sparsh1402.github.io/NOTES/](https://sparsh14
 - [Java Pattern Matching: instanceof (Java 16) and Switch (Java 21)](./notes/java/40_Java_Pattern_Matching_Instanceof_Switch.md) - Pattern matching for type checking
 - [Java 16: Records](./notes/java/41_Java_16_Records.md) - Immutable data carrier classes
 
+### 🧩 DSA (Data Structures & Algorithms)
+
+Short revision notes for solved interview problems: pattern, core steps, key insight, complexity, traps.
+
+#### Arrays & Hashing
+- [Two Sum](./notes/dsa/01_Two_Sum.md) - Hash map complement lookup, O(n)
+- [Product of Array Except Self](./notes/dsa/02_Product_of_Array_Except_Self.md) - Prefix × suffix products without division, O(1) extra space
+
 *More topics will be added as course transcripts are processed.*
 
 ## 🚀 How to Use
 
 ### Using the Website
 
-1. **Navigate:** Click on any subject (DBMS, Java) in the sidebar, then select a topic
+1. **Navigate:** Click on any subject (DBMS, Java, DSA) in the sidebar, then select a topic
 2. **Highlight:** 
    - Click the "✨ Highlight Mode" button
    - Select text you want to highlight
@@ -220,6 +228,7 @@ Or manually enable GitHub Pages:
   - Collections Framework (7 topics)
   - Threading and Concurrency (9 topics)
   - Modern Java Features (6 topics)
+- **DSA Notes:** 2 problems (Arrays & Hashing)
 
 ## 🤝 Contributing
 
