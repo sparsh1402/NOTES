@@ -415,6 +415,8 @@ kbd {
 /* Code */
 .note code {
     font-family: var(--mono);
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "calt" 0;
     font-size: 0.86em;
     padding: 0.12em 0.38em;
     border-radius: 4px;
