@@ -765,13 +765,18 @@ function initializeContact() {
     const modal = $('contactModal');
     const form = $('contactForm');
 
+    modal.hidden = true;
+    modal.style.display = 'none';
+
     const openModal = () => {
         modal.hidden = false;
+        modal.style.display = '';
         document.body.style.overflow = 'hidden';
         $('contactName').focus();
     };
     const closeModal = () => {
         modal.hidden = true;
+        modal.style.display = 'none';
         document.body.style.overflow = '';
         $('contactBtn').focus();
     };
