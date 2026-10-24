@@ -116,6 +116,7 @@ Short revision notes for solved interview problems: pattern, core steps, key ins
 #### Arrays & Hashing
 - [Two Sum](./notes/dsa/01_Two_Sum.md) - Hash map complement lookup, O(n)
 - [Product of Array Except Self](./notes/dsa/02_Product_of_Array_Except_Self.md) - Prefix × suffix products without division, O(1) extra space
+- [Subarray Sum Equals K](./notes/dsa/03_Subarray_Sum_Equals_K.md) - Prefix-sum counts in a hash map, works with negatives, O(n)
 
 *More topics will be added as course transcripts are processed.*
 
@@ -222,7 +223,7 @@ Or manually enable GitHub Pages:
   - Collections Framework (7 topics)
   - Threading and Concurrency (9 topics)
   - Modern Java Features (6 topics)
-- **DSA Notes:** 2 problems (Arrays & Hashing)
+- **DSA Notes:** 3 problems (Arrays & Hashing)
 
 ## 🤝 Contributing
 
