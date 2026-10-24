@@ -33,6 +33,24 @@
         "Did not separate output space from auxiliary space until asked",
         "Raised zero edge cases only when prompted"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "area": "dsa",
+      "score": 5.0,
+      "title": "Mock round: Subarray Sum Equals K (prefix sums, hashing, medium)",
+      "source": "DSA Interview Simulator",
+      "strengths": [
+        "Named brute force and the prefix-sum map direction on your own",
+        "Corrected the map to store counts instead of indices mid-trace",
+        "Final code correct on 300 random tests; found the all-zeros and x,-x space cases"
+      ],
+      "gaps": [
+        "Declined to propose test cases: list 2 edge cases from the constraints before coding",
+        "Treated sliding window and prefix-sum map as the same idea; missed that negatives break the window",
+        "Explained the {0:1} entry mechanically, not as the empty prefix, until guided",
+        "Imprecise claims: {0:1} makes it faster, key size vs number of entries"
+      ]
     }
   ]
 }
