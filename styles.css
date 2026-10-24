@@ -755,3 +755,6 @@ kbd {
     text-decoration: none;
 }
 .progress-link:hover { color: var(--text); text-decoration: underline; }
+
+.note .mermaid { margin: 1.5rem 0; overflow-x: auto; text-align: center; }
+.note .mermaid svg { max-width: 100%; height: auto; }

@@ -127,10 +127,8 @@ const notesData = {
         description: 'High Level Design',
         icon: '🏗️',
         sections: {
-            'design-patterns': [
-                // Add your HLD notes here
-                // Example: { id: 'hld-01', title: 'System Design Basics', file: 'notes/hld/01_System_Design_Basics.md' }
-                // When you add notes, create a 'hld' folder inside 'notes' and add your markdown files there
+            'case-studies': [
+                { id: 'hld-01', title: 'Price-Drop Alerts for Watched Products', file: 'notes/hld/01_Price_Drop_Alerts.md' }
             ]
         }
     },
@@ -555,6 +553,14 @@ function renderNote(markdown, found) {
         wrap.appendChild(table);
     });
 
+    // Mermaid diagrams: ```mermaid blocks become rendered diagrams
+    article.querySelectorAll('pre > code.language-mermaid').forEach(code => {
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = code.textContent;
+        code.parentElement.replaceWith(div);
+    });
+
     // Code blocks: syntax highlighting and copy button
     article.querySelectorAll('pre > code').forEach(code => {
         if (window.hljs) {
@@ -596,6 +602,17 @@ function renderNote(markdown, found) {
     const content = $('content');
     content.innerHTML = '';
     content.appendChild(article);
+    renderMermaid(article);
+}
+
+function renderMermaid(root) {
+    const nodes = root.querySelectorAll('.mermaid');
+    if (!nodes.length || !window.mermaid) return;
+    const dark = document.documentElement.getAttribute('data-theme') !== 'light';
+    try {
+        mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'default', securityLevel: 'strict' });
+        mermaid.run({ nodes }).catch(() => {});
+    } catch (e) { /* leave diagram source visible */ }
 }
 
 function scrollToSection(sectionId) {

@@ -26,3 +26,17 @@ After every mock interview or practice round, score me and add one entry to the 
 - Keep `gaps` specific enough to act on. They feed the dashboard's "Focus next" list.
 - Append to the array. Never edit or delete earlier entries.
 - Also tell me the score and gaps in chat.
+
+## After every HLD (system design) round: write the solution note
+
+Besides logging the session, add the full model answer to the HLD tab of the notes site:
+
+1. Create `notes/hld/NN_<Problem_Name>.md` (next number in sequence). Follow the structure of `notes/hld/01_Price_Drop_Alerts.md`:
+   prompt, Quick Revision table, clarifying questions, requirements (functional + NFR with numbers), capacity estimation worked out step by step,
+   API design, data model with keys derived from the access patterns, architecture diagram (```mermaid flowchart TB```), sequence diagram of the main flow,
+   2–4 deep dives, bottlenecks and failure handling table, trade-offs and alternatives, **15+ follow-up questions with answers**, concepts glossary,
+   "My mock vs a strong answer" table using the round's actual gaps, and a 45-minute game plan.
+2. Register it in `app.js` under `notesData.hld.sections['case-studies']` as `{ id: 'hld-NN', title: '...', file: 'notes/hld/NN_....md' }`.
+3. Bump the `app.js?v=` cache-buster in `index.html`.
+4. Mermaid diagrams render on the site. Avoid `#` inside sequence-diagram messages (Mermaid treats it as an entity code).
+5. Commit as `Add HLD notes: <problem>` together with or after the `Log progress:` commit, and push to `main`.
