@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SDE-2 Readiness · Study Notes</title>
+<meta name="description" content="Interview prep progress measured against the SDE-2 hiring bar.">
+<script>
+  try { document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark'); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: an engineering-levels scorecard in the notes site's blueprint-ink palette.
+   Readiness summary, one row per skill area on a shared 0-10 scale with the SDE-2 bar marked,
+   then focus list, session log and the logging instructions. */
+:root {
+  --bg: #12162a; --bg-raised: #191e36; --bg-sunk: #0e1122; --line: #2a3150; --line-soft: #222842;
+  --text: #e6e8f2; --text-2: #a9aec8; --text-3: #757b99; --link: #9cb4ff;
+  --you: #6fd3e0; --bar: #f0a43a; --ok: #6cc57a; --warn: #e9b04a; --bad: #ee7c7e; --none: #757b99;
+  --you-soft: rgba(111, 211, 224, .12);
+  --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #f7f8fc; --bg-raised: #ffffff; --bg-sunk: #eef0f7; --line: #d9dceb; --line-soft: #e6e8f2;
+  --text: #1a1f38; --text-2: #4a5070; --text-3: #6b7090; --link: #3554c7;
+  --you: #0b6e78; --bar: #b86b00; --ok: #2f7d3a; --warn: #9a6200; --bad: #b2393b; --none: #7b809c;
+  --you-soft: rgba(11, 110, 120, .1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 15px; line-height: 1.55; }
+a { color: var(--link); }
+:focus-visible { outline: 2px solid var(--you); outline-offset: 2px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 64px; display: grid; gap: 30px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: .9rem; }
+.top a { text-decoration: none; color: var(--text-2); }
+.top a:hover { color: var(--text); }
+.icon-btn { border: 1px solid var(--line); background: var(--bg-raised); color: var(--text-2); border-radius: 6px; padding: 6px 12px; cursor: pointer; font: inherit; font-size: .85rem; }
+h1, h2 { margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+h1 { font-size: clamp(1.7rem, 4.2vw, 2.4rem); line-height: 1.1; font-weight: 700; }
+h2 { font-size: 1.15rem; font-weight: 600; }
+.eyebrow { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-3); }
+.lede { color: var(--text-2); max-width: 62ch; margin: 10px 0 0; }
+.panel { background: var(--bg-raised); border: 1px solid var(--line); border-radius: 10px; }
+.section-head { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+.note { font-size: .82rem; color: var(--text-3); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.summary { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 24px; align-items: end; }
+@media (max-width: 760px) { .summary { grid-template-columns: minmax(0, 1fr); } }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kpi { padding: 16px; border-left: 1px solid var(--line); min-width: 0; }
+.kpi:first-child { border-left: 0; }
+.kpi b { display: block; font-family: var(--mono); font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.kpi span { font-size: .78rem; color: var(--text-3); }
+
+.chip { font-size: .72rem; font-weight: 600; padding: 2px 9px; border-radius: 999px; border: 1px solid currentColor; white-space: nowrap; }
+.st-none { color: var(--none); } .st-below { color: var(--bad); } .st-close { color: var(--warn); } .st-ready { color: var(--ok); }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .8rem; color: var(--text-3); }
+.key { display: inline-flex; align-items: center; gap: 6px; }
+.key i { display: inline-block; width: 18px; height: 8px; border-radius: 2px; background: var(--you); }
+.key i.tick { width: 3px; height: 14px; background: var(--bar); }
+.areas { overflow: hidden; }
+.cols { display: grid; grid-template-columns: minmax(150px, 230px) minmax(0, 1fr) 128px; gap: 8px 18px; align-items: center; }
+.axis-row { padding: 12px 18px 0; }
+.axis { position: relative; height: 16px; font-size: .68rem; color: var(--text-3); font-family: var(--mono); }
+.axis span { position: absolute; transform: translateX(-50%); }
+.arow { padding: 14px 18px; border: 0; border-bottom: 1px solid var(--line-soft); width: 100%; text-align: left; background: none; color: inherit; font: inherit; cursor: pointer; }
+.arow:last-child { border-bottom: 0; }
+.arow:hover, .arow[aria-pressed="true"] { background: var(--you-soft); }
+.aname { font-weight: 600; min-width: 0; }
+.aname small { display: block; font-weight: 400; color: var(--text-3); font-size: .78rem; line-height: 1.35; }
+.track { position: relative; height: 14px; background: var(--bg-sunk); border-radius: 3px; }
+.track .grid { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.track .fill { position: absolute; inset: 0 auto 0 0; background: var(--you); border-radius: 3px; transition: width .4s ease; }
+.track .tick { position: absolute; top: -5px; bottom: -5px; width: 3px; margin-left: -1.5px; background: var(--bar); border-radius: 1px; }
+.ameta { display: grid; justify-items: end; gap: 4px; }
+.ameta .score { font-family: var(--mono); font-size: .82rem; color: var(--text-2); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .cols { grid-template-columns: minmax(0, 1fr) auto; }
+  .arow .track-cell { grid-column: 1 / -1; grid-row: 2; }
+  .axis-row .spacer { display: none; }
+  .axis-row .axis { grid-column: 1 / -1; }
+}
+
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.list { overflow: hidden; }
+.item { padding: 13px 18px; border-bottom: 1px solid var(--line-soft); display: grid; gap: 6px; }
+.item:last-child { border-bottom: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; justify-content: space-between; }
+.title { font-weight: 600; min-width: 0; }
+.sub { font-size: .8rem; color: var(--text-3); }
+.why { font-size: .82rem; color: var(--text-2); }
+.sc { font-family: var(--mono); font-weight: 600; font-size: .88rem; font-variant-numeric: tabular-nums; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: .76rem; padding: 2px 9px; border-radius: 4px; }
+.tag.gap { border: 1px dashed var(--bad); color: var(--bad); }
+.tag.str { border: 1px solid var(--line); color: var(--ok); }
+.empty { padding: 26px 18px; color: var(--text-2); display: grid; gap: 6px; }
+.empty b { color: var(--text); }
+.linkbtn { background: none; border: 0; padding: 0; color: var(--link); text-decoration: underline; cursor: pointer; font: inherit; }
+.filter { font-size: .82rem; color: var(--text-3); display: flex; gap: 8px; }
+
+details.panel > summary { cursor: pointer; padding: 14px 18px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+details.panel > summary::-webkit-details-marker { display: none; }
+details.panel > summary::after { content: "+"; font-family: var(--mono); color: var(--text-3); }
+details.panel[open] > summary::after { content: "\2013"; }
+.inner { padding: 0 18px 18px; display: grid; gap: 10px; }
+.inner p { margin: 0; max-width: 72ch; color: var(--text-2); }
+pre.snippet { margin: 0; background: var(--bg-sunk); border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; overflow-x: auto; font-family: var(--mono); font-size: .78rem; line-height: 1.6; white-space: pre-wrap; word-break: break-word; color: var(--text); }
+.btn { border: 1px solid var(--you); background: none; color: var(--you); border-radius: 6px; padding: 7px 14px; cursor: pointer; font: inherit; font-weight: 600; font-size: .88rem; justify-self: start; }
+.rubric { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; font-size: .85rem; color: var(--text-2); }
+.rubric div { border-top: 3px solid var(--line); padding-top: 6px; }
+.rubric b { font-family: var(--mono); display: block; color: var(--text); }
+.notes { font-size: .84rem; color: var(--text-2); display: grid; gap: 6px; }
+.error { padding: 12px 16px; border: 1px dashed var(--warn); color: var(--warn); border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { .track .fill { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a href="../">&larr; Study Notes</a>
+    <button class="icon-btn" id="themeBtn" type="button">Light theme</button>
+  </div>
+
+  <header class="summary">
+    <div>
+      <div class="eyebrow">Interview readiness · benchmark: SDE-2</div>
+      <h1>How close am I to an SDE-2 offer?</h1>
+      <p class="lede">Each mock interview or practice round finished in a prep project is scored and logged here. Every skill area shows my recent level next to the bar product companies set for SDE-2.</p>
+    </div>
+    <div class="panel kpis">
+      <div class="kpi"><b id="kReady">&mdash;</b><span>overall readiness</span></div>
+      <div class="kpi"><b id="kCover">&mdash;</b><span>areas assessed</span></div>
+      <div class="kpi"><b id="kSessions">&mdash;</b><span>sessions logged</span></div>
+    </div>
+  </header>
+
+  <div class="error" id="loadError" hidden></div>
+
+  <section aria-labelledby="hAreas">
+    <div class="section-head">
+      <h2 id="hAreas">Me vs the SDE-2 bar</h2>
+      <div class="legend">
+        <span class="key"><i></i>My level (average of last 3 sessions)</span>
+        <span class="key"><i class="tick"></i>SDE-2 hiring bar</span>
+      </div>
+    </div>
+    <div class="panel areas">
+      <div class="cols axis-row" aria-hidden="true"><span class="spacer"></span><div class="axis" id="axis"></div><span class="spacer"></span></div>
+      <div id="areaList"><div class="empty">Loading skill areas&hellip;</div></div>
+    </div>
+  </section>
+
+  <div class="two">
+    <section aria-labelledby="hFocus">
+      <div class="section-head"><h2 id="hFocus">Focus next</h2><span class="note">Largest weighted gaps first</span></div>
+      <div class="panel list" id="focus"><div class="empty">Loading&hellip;</div></div>
+    </section>
+    <section aria-labelledby="hLog">
+      <div class="section-head">
+        <h2 id="hLog">Session log</h2>
+        <div class="filter" id="filterNote" hidden><span id="filterLabel"></span><button class="linkbtn" id="clearFilter" type="button">Show all</button></div>
+      </div>
+      <div class="panel list" id="sessions"><div class="empty">Loading&hellip;</div></div>
+    </section>
+  </div>
+
+  <details class="panel" open>
+    <summary>Log sessions from other prep projects</summary>
+    <div class="inner">
+      <p>Add this to the project instructions of each prep project (DSA, LLD and any added later). Claude there will append a scored entry to <code>progress/sessions.json</code> in the NOTES repo after every session, and this page picks it up after the site redeploys.</p>
+      <pre class="snippet" id="snippet">Loading&hellip;</pre>
+      <button class="btn" id="copyBtn" type="button">Copy instructions</button>
+      <span class="note" id="copyStatus" aria-live="polite"></span>
+    </div>
+  </details>
+
+  <details class="panel">
+    <summary>How scores and the bar work</summary>
+    <div class="inner">
+      <div class="rubric">
+        <div><b>0&ndash;3</b>Learning the basics. Needs heavy hints.</div>
+        <div><b>4&ndash;5</b>SDE-1 level. Solves with nudges, gaps in depth.</div>
+        <div><b>6&ndash;7</b>SDE-2 level. Independent, clear trade-offs, clean code.</div>
+        <div><b>8&ndash;10</b>Senior level. Drives the round and anticipates follow-ups.</div>
+      </div>
+      <div class="notes" id="barNotes"></div>
+    </div>
+  </details>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var AREAS = [], SESSIONS = [], SOURCES = [], filterArea = null;
+
+  // Theme, shared with the notes site
+  function syncThemeBtn() {
+    var dark = document.documentElement.getAttribute('data-theme') !== 'light';
+    $('themeBtn').textContent = dark ? 'Light theme' : 'Dark theme';
+  }
+  $('themeBtn').addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    syncThemeBtn();
+  });
+  syncThemeBtn();
+
+  for (var v = 0; v <= 10; v += 2) {
+    var s = document.createElement('span'); s.style.left = (v * 10) + '%'; s.textContent = v; $('axis').appendChild(s);
+  }
+
+  function num(x) { var n = Number(x); return isFinite(n) ? n : null; }
+  function fmt(n) { return n == null ? '—' : (Math.round(n * 10) / 10).toFixed(1); }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function byNewest(a, b) { return String(b.date || '').localeCompare(String(a.date || '')) || (b._i - a._i); }
+  function sessionsFor(id) { return SESSIONS.filter(function (s) { return s.area === id && num(s.score) != null; }).sort(byNewest); }
+  function levelOf(id) {
+    var r = sessionsFor(id).slice(0, 3);
+    if (!r.length) return null;
+    return r.reduce(function (t, s) { return t + num(s.score); }, 0) / r.length;
+  }
+  function statusOf(level, target) {
+    if (level == null) return { cls: 'st-none', label: 'Not assessed' };
+    if (level >= target) return { cls: 'st-ready', label: 'At the bar' };
+    if (level >= target - 1.5) return { cls: 'st-close', label: 'Close' };
+    return { cls: 'st-below', label: 'Below bar' };
+  }
+  function sorted() { return AREAS.slice().sort(function (a, b) { return (num(a.order) || 99) - (num(b.order) || 99); }); }
+
+  function renderKpis() {
+    var wsum = 0, got = 0, assessed = 0;
+    AREAS.forEach(function (a) {
+      var w = num(a.weight) || 0, t = num(a.target) || 1, l = levelOf(a.id);
+      wsum += w;
+      if (l != null) { assessed++; got += w * Math.min(l / t, 1); }
+    });
+    $('kReady').textContent = AREAS.length ? Math.round(wsum ? got / wsum * 100 : 0) + '%' : '—';
+    $('kCover').textContent = AREAS.length ? assessed + '/' + AREAS.length : '—';
+    $('kSessions').textContent = String(SESSIONS.length);
+  }
+
+  function renderAreas() {
+    var list = $('areaList'); list.textContent = '';
+    sorted().forEach(function (a) {
+      var l = levelOf(a.id), t = num(a.target) || 0, st = statusOf(l, t), n = sessionsFor(a.id).length;
+      var row = el('button', 'arow cols'); row.type = 'button';
+      row.setAttribute('aria-pressed', filterArea === a.id ? 'true' : 'false');
+      row.addEventListener('click', function () {
+        filterArea = filterArea === a.id ? null : a.id; render();
+        $('hLog').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      });
+      var name = el('div', 'aname', a.name); name.appendChild(el('small', null, a.short || ''));
+      var cell = el('div', 'track-cell'), tr = el('div', 'track');
+      tr.setAttribute('role', 'img');
+      tr.setAttribute('aria-label', a.name + ': my level ' + fmt(l) + ' of 10, SDE-2 bar ' + fmt(t));
+      for (var g = 2; g < 10; g += 2) { var gi = el('i', 'grid'); gi.style.left = (g * 10) + '%'; tr.appendChild(gi); }
+      var f = el('i', 'fill'); f.style.width = ((l || 0) * 10) + '%'; tr.appendChild(f);
+      var tk = el('i', 'tick'); tk.style.left = (t * 10) + '%'; tr.appendChild(tk);
+      cell.appendChild(tr);
+      var meta = el('div', 'ameta');
+      meta.appendChild(el('span', 'chip ' + st.cls, st.label));
+      meta.appendChild(el('span', 'score', fmt(l) + ' / ' + fmt(t) + (n ? ' · ' + n + (n === 1 ? ' session' : ' sessions') : '')));
+      row.append(name, cell, meta);
+      list.appendChild(row);
+    });
+  }
+
+  function renderFocus() {
+    var box = $('focus'); box.textContent = '';
+    var items = [];
+    AREAS.forEach(function (a) {
+      var l = levelOf(a.id), t = num(a.target) || 0, gap = Math.max(t - (l || 0), 0);
+      if (gap <= 0) return;
+      var gaps = [];
+      sessionsFor(a.id).slice(0, 3).forEach(function (s) {
+        (Array.isArray(s.gaps) ? s.gaps : []).forEach(function (g) { if (gaps.length < 2 && gaps.indexOf(g) < 0) gaps.push(String(g)); });
+      });
+      items.push({ a: a, l: l, gap: gap, p: gap * (num(a.weight) || 0), gaps: gaps });
+    });
+    items.sort(function (x, y) { return y.p - x.p; });
+    if (!items.length) { box.appendChild(el('div', 'empty', 'Every area is at or above the SDE-2 bar.')); return; }
+    items.slice(0, 4).forEach(function (it) {
+      var d = el('div', 'item'), r = el('div', 'row');
+      r.append(el('span', 'title', it.a.name), el('span', 'sc', it.l == null ? 'not assessed' : '−' + fmt(it.gap) + ' to bar'));
+      d.appendChild(r);
+      if (it.gaps.length) {
+        var tg = el('div', 'tags');
+        it.gaps.forEach(function (g) { tg.appendChild(el('span', 'tag gap', g)); });
+        d.appendChild(tg);
+      }
+      d.appendChild(el('div', 'why', (it.l == null ? 'Take a first mock round. ' : '') + (it.a.bar || '')));
+      box.appendChild(d);
+    });
+  }
+
+  function renderSessions() {
+    var box = $('sessions'); box.textContent = '';
+    var names = {}; AREAS.forEach(function (a) { names[a.id] = a; });
+    var rows = SESSIONS.slice().sort(byNewest);
+    if (filterArea) rows = rows.filter(function (s) { return s.area === filterArea; });
+    $('filterNote').hidden = !filterArea;
+    if (filterArea) $('filterLabel').textContent = 'Showing ' + (names[filterArea] ? names[filterArea].name : filterArea);
+    if (!rows.length) {
+      var e = el('div', 'empty');
+      e.append(el('b', null, filterArea ? 'No sessions in this area yet.' : 'No sessions logged yet.'),
+        el('span', null, 'Add the instructions below to your DSA and LLD projects, then finish a mock round there. The scored result shows up here.'));
+      box.appendChild(e); return;
+    }
+    rows.slice(0, 50).forEach(function (s) {
+      var a = names[s.area], d = el('div', 'item'), r = el('div', 'row'), sv = num(s.score);
+      var sc = el('span', 'sc', sv == null ? '—' : fmt(sv) + ' / 10');
+      if (a && sv != null) sc.classList.add(statusOf(sv, num(a.target) || 0).cls);
+      r.append(el('span', 'title', s.title || 'Session'), sc);
+      d.append(r, el('div', 'sub', [s.date, a ? a.name : s.area, s.source].filter(Boolean).join(' · ')));
+      var str = Array.isArray(s.strengths) ? s.strengths : [], gaps = Array.isArray(s.gaps) ? s.gaps : [];
+      if (str.length || gaps.length) {
+        var tg = el('div', 'tags');
+        str.slice(0, 4).forEach(function (x) { tg.appendChild(el('span', 'tag str', '+ ' + x)); });
+        gaps.slice(0, 4).forEach(function (x) { tg.appendChild(el('span', 'tag gap', '− ' + x)); });
+        d.appendChild(tg);
+      }
+      box.appendChild(d);
+    });
+  }
+
+  function renderSnippet() {
+    var ids = sorted().map(function (a) { return a.id + ' = ' + a.name; }).join(', ');
+    $('snippet').textContent =
+      'Progress tracking: after every mock interview or practice round in this project, score me and log it to my progress dashboard.\n' +
+      'Append one entry to the "sessions" array in progress/sessions.json in the GitHub repo sparsh1402/NOTES (branch main), commit it as "Log progress: <title>" and push. Never edit or delete earlier entries.\n' +
+      'Entry fields: date (YYYY-MM-DD), area, score (0-10; 6-7 = SDE-2 level, 4-5 = SDE-1 level), title (what was tested), source (this project\'s name), strengths (list), gaps (list of specific things to fix).\n' +
+      'Area ids: ' + ids + '.\n' +
+      'Score against what an SDE-2 interviewer at a product company expects, not against effort. Also tell me the score and gaps in chat.\n' +
+      'Format details: progress/README.md in the same repo.';
+  }
+
+  function renderNotes() {
+    var box = $('barNotes'); box.textContent = '';
+    box.appendChild(el('div', null, 'Overall readiness is each area’s level divided by its bar (capped at 100%), weighted by how much that area decides an SDE-2 loop. Unassessed areas count as zero. Bars and weights live in progress/areas.json.'));
+    sorted().forEach(function (a) {
+      box.appendChild(el('div', null, a.name + ': bar ' + fmt(num(a.target)) + ', weight ' + (num(a.weight) || 0) + '%. ' + (a.bar || '')));
+    });
+    SOURCES.forEach(function (src) {
+      if (!src || !/^https:\/\//.test(String(src.url))) return;
+      var line = el('div'), link = el('a', null, src.title || src.url);
+      link.href = src.url; link.target = '_blank'; link.rel = 'noopener';
+      line.appendChild(link);
+      if (src.note) line.appendChild(document.createTextNode(' — ' + src.note));
+      box.appendChild(line);
+    });
+  }
+
+  function render() { renderKpis(); renderAreas(); renderFocus(); renderSessions(); renderSnippet(); renderNotes(); }
+
+  $('clearFilter').addEventListener('click', function () { filterArea = null; render(); });
+  $('copyBtn').addEventListener('click', function () {
+    var text = $('snippet').textContent, st = $('copyStatus');
+    function selectIt() { var r = document.createRange(); r.selectNodeContents($('snippet')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); st.textContent = 'Selected. Press Ctrl+C to copy.'; }
+    try { navigator.clipboard.writeText(text).then(function () { st.textContent = 'Copied.'; }, selectIt); } catch (e) { selectIt(); }
+  });
+
+  var bust = '?t=' + Date.now();
+  Promise.all([
+    fetch('areas.json' + bust).then(function (r) { if (!r.ok) throw new Error('areas.json ' + r.status); return r.json(); }),
+    fetch('sessions.json' + bust).then(function (r) { if (!r.ok) throw new Error('sessions.json ' + r.status); return r.json(); })
+  ]).then(function (res) {
+    AREAS = Array.isArray(res[0].areas) ? res[0].areas : [];
+    SOURCES = Array.isArray(res[0].sources) ? res[0].sources : [];
+    var raw = Array.isArray(res[1]) ? res[1] : (Array.isArray(res[1].sessions) ? res[1].sessions : []);
+    SESSIONS = raw.map(function (s, i) { var o = Object.assign({}, s); o._i = i; return o; });
+    render();
+  }).catch(function (err) {
+    $('loadError').hidden = false;
+    $('loadError').textContent = 'Couldn’t load the progress data (' + err.message + '). If you opened this file directly from disk, serve the folder instead (see docs/START_LOCAL_SERVER.md).';
+  });
+})();
+</script>
+</body>
+</html>

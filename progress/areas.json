@@ -1,0 +1,26 @@
+{
+  "benchmark": "SDE-2 at a product company",
+  "scale": "0-10. 0-3 learning the basics, 4-5 SDE-1 level, 6-7 SDE-2 level, 8-10 senior level.",
+  "areas": [
+    { "id": "dsa", "order": 1, "name": "DSA & problem solving", "short": "Arrays, graphs, DP under time pressure", "target": 7.5, "weight": 18,
+      "bar": "Optimal approach to a LeetCode medium in about 25 minutes, clean code, edge cases covered, complexity stated without prompting." },
+    { "id": "lld", "order": 2, "name": "Low-level design", "short": "Machine coding, OOP, patterns", "target": 7.5, "weight": 18,
+      "bar": "Working, extensible class design in a 60-90 minute machine-coding round: SOLID, the right patterns, thread safety where it matters." },
+    { "id": "hld", "order": 3, "name": "System design", "short": "Scalable services, trade-offs", "target": 6.5, "weight": 18,
+      "bar": "Drives a design for a common service: requirements, capacity estimate, data model, caching, queues, and consistency trade-offs." },
+    { "id": "cs", "order": 4, "name": "CS fundamentals", "short": "DBMS, OS, networking", "target": 6.5, "weight": 10,
+      "bar": "Explains indexing, transactions and isolation levels, processes vs threads, and what happens on an HTTP request, with real examples." },
+    { "id": "lang", "order": 5, "name": "Java & concurrency depth", "short": "Collections internals, threads, JVM", "target": 7, "weight": 10,
+      "bar": "Knows HashMap and ConcurrentHashMap internals, executors, CompletableFuture, memory model basics, and GC at a working level." },
+    { "id": "prod", "order": 6, "name": "Production engineering", "short": "Testing, CI/CD, cloud, observability", "target": 6.5, "weight": 10,
+      "bar": "Has shipped and operated services: writes tests, understands CI/CD pipelines, deploys to cloud, reads metrics and logs to debug." },
+    { "id": "behavioral", "order": 7, "name": "Behavioral & ownership", "short": "Impact stories, conflict, mentoring", "target": 7, "weight": 10,
+      "bar": "Clear STAR stories showing ownership of a feature end to end, measurable impact, handling disagreement, and helping juniors." },
+    { "id": "ai", "order": 8, "name": "AI-assisted development", "short": "Using AI tools with judgment", "target": 6, "weight": 6,
+      "bar": "Uses AI coding tools daily but reviews and tests their output, and can explain the code without them." }
+  ],
+  "sources": [
+    { "title": "What Software Engineers Need to Know in 2026 (Penn Engineering Online)", "url": "https://online.seas.upenn.edu/uncategorized/what-software-engineers-need-to-know-in-2026/", "note": "Fundamentals, performance at scale and architecture decisions still decide hiring." },
+    { "title": "The Future of Software Engineering Jobs in 2026 (Second Talent)", "url": "https://www.secondtalent.com/resources/the-future-of-software-engineering-jobs-in-2026-what-hiring-managers-need-to-know/", "note": "About half of professional developers use AI tools daily." }
+  ]
+}

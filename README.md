@@ -6,7 +6,9 @@ This repository contains comprehensive notes on **Database Management Systems (D
 
 Visit the live website: **[https://sparsh1402.github.io/NOTES/](https://sparsh1402.github.io/NOTES)**
 
-**📖 Deployment Guide:** See [docs/DEPLOY_GITHUB_WEB.md](./docs/DEPLOY_GITHUB_WEB.md) for step-by-step instructions using GitHub web interface.
+**📈 Progress dashboard: https://sparsh1402.github.io/NOTES/progress/ tracks scored mock interviews against the SDE-2 bar. See progress/README.md for how prep projects log sessions.
+
+📖 Deployment Guide:** See [docs/DEPLOY_GITHUB_WEB.md](./docs/DEPLOY_GITHUB_WEB.md) for step-by-step instructions using GitHub web interface.
 
 ## ✨ Features
 
@@ -192,7 +194,8 @@ Notes are organized in a structured format with:
 - **HTML5** - Structure
 - **CSS3** - Styling (with CSS variables for theming)
 - **JavaScript** - Navigation, search and theming
-- **Marked.js** - Markdown to HTML conversion
+- **Marked.js** - Markdown to HTML conversion
+
 - **highlight.js** - Code syntax highlighting
 - **GitHub Pages** - Hosting
 
