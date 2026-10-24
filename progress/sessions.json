@@ -51,6 +51,28 @@
         "Explained the {0:1} entry mechanically, not as the empty prefix, until guided",
         "Imprecise claims: {0:1} makes it faster, key size vs number of entries"
       ]
+    },
+    {
+      "date": "2026-10-21",
+      "area": "lld",
+      "score": 3.5,
+      "title": "Mock round: Expense sharing app (Splitwise), equal split",
+      "source": "LLD Interview Agent",
+      "strengths": [
+        "Asked the right scoping questions: split types, groups vs individual users, settlements",
+        "Switched money from double to BigDecimal and fixed the immutable add() bug once pointed out",
+        "Final structure is SDE-2 shaped: SplitStrategy interface, Split as data, ExpenseService, two-level BalanceSheet with signed amounts that nets debts",
+        "Working Main demo of dinner plus cab showing netted balances"
+      ],
+      "gaps": [
+        "Missed Expense as the core entity and its payer and total fields until prompted",
+        "Skipped the validation question (percentages not summing to 100, exact amounts not matching total)",
+        "Modeled balances as one number per user; needed several hints to reach pairwise Map<User, Map<User, BigDecimal>>",
+        "Mixed responsibilities: strategy and Expense mutated User balances before being split out",
+        "Rounding drops a paisa (100/3); did not distribute the remainder",
+        "Did not answer the percent/exact split follow-up; SplitStrategy signature cannot carry per-user shares",
+        "Took about 2.5 hours with step-by-step guidance versus a 45-50 minute round; Main was not run until the end"
+      ]
     }
   ]
 }
