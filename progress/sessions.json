@@ -73,6 +73,33 @@
         "Did not answer the percent/exact split follow-up; SplitStrategy signature cannot carry per-user shares",
         "Took about 2.5 hours with step-by-step guidance versus a 45-50 minute round; Main was not run until the end"
       ]
+    },
+    {
+      "date": "2026-10-24",
+      "area": "hld",
+      "score": 3.0,
+      "title": "Mock round: Price-drop alerts for watched products (e-commerce)",
+      "source": "HLD Interview Agent",
+      "strengths": [
+        "Asked clarifying questions before designing: scope (watch specific product vs new launches) and scale",
+        "Defined the drop threshold precisely when pushed: 10% below the price at the time the user added the watch",
+        "Thought about the user's experience with flip-flopping prices and proposed a per-user notification cap",
+        "Separated internal APIs from public ones, added view and remove watchlist APIs, fixed GET to POST when challenged",
+        "Reached for Kafka to decouple seller price updates from fan-out"
+      ],
+      "gaps": [
+        "No capacity estimate: never computed QPS (about 600 price updates/s average, 10x in sales), storage (about 500M watch rows, ~50GB) or notification volume",
+        "Guessed latency targets (ms, 1s, 5s) instead of dividing: 5M pushes at 1k/s per worker is 5,000 worker-seconds, so the target is minutes",
+        "Wrong CAP call: put consistency first by confusing catalog price display with alerting; this system should favor availability and eventual consistency",
+        "Skipped missed and duplicate notifications three times: no idempotency key, dedupe store or at-least-once handling",
+        "Baseline price is still sent by the client; the server must look up the price at watch time",
+        "Chose DynamoDB but gave no partition key, no GSI or second table for the productId vs userId access patterns, and no plan for hot partitions",
+        "Fan-out reads all 5M watches; missed storing threshold_price as a sort key so a range query returns only the watches that match",
+        "Internal APIs pass 5M user IDs in one payload; no pagination or batched jobs",
+        "No component diagram and no notification service design (FCM/APNs rate limits, retries, DLQ, user preferences)",
+        "No debouncing or coalescing of rapid price changes per product; daily-cap state location never specified",
+        "Pacing: requirements and NFRs took about 30 of 50 minutes, so the high-level design and deep dive barely happened"
+      ]
     }
   ]
 }
