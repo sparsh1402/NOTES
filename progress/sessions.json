@@ -16,6 +16,23 @@
         "Did not propose any test cases of your own",
         "Uses containsKey then get, hashing the same key twice"
       ]
+    },
+    {
+      "date": "2026-10-23",
+      "area": "dsa",
+      "score": 5.5,
+      "title": "Mock round: Product of Array Except Self (prefix/suffix, medium)",
+      "source": "DSA Interview Simulator",
+      "strengths": [
+        "Reached prefix x suffix products after one guiding question",
+        "Correct identity values (start at 1) and loop bounds on the first try",
+        "Wrote the O(1) extra-space follow-up correctly"
+      ],
+      "gaps": [
+        "Proposed division although the problem forbids it: read the constraints before choosing an approach",
+        "Did not separate output space from auxiliary space until asked",
+        "Raised zero edge cases only when prompted"
+      ]
     }
   ]
 }
