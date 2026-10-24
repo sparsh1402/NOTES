@@ -1,3 +1,21 @@
 {
-  "sessions": []
+  "sessions": [
+    {
+      "date": "2026-10-23",
+      "area": "dsa",
+      "score": 4.5,
+      "title": "Mock round: Two Sum (arrays, hashing, easy)",
+      "source": "DSA Interview Simulator",
+      "strengths": [
+        "Went from O(n^2) to a one-pass hash map without hints",
+        "Checked the complement before inserting, so duplicates like [3,3] work",
+        "Clear trace of [3,3] showing the map contents at each step"
+      ],
+      "gaps": [
+        "First submission did not compile: contains instead of containsKey, missing parenthesis",
+        "Did not propose any test cases of your own",
+        "Uses containsKey then get, hashing the same key twice"
+      ]
+    }
+  ]
 }
