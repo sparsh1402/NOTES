@@ -745,3 +745,13 @@ kbd {
     .note pre { white-space: pre-wrap; border-color: #ccc; background: #f6f6f6; }
     .note h2 { break-after: avoid; }
 }
+
+/* Link to the progress dashboard (progress/index.html) */
+.sidebar-foot { display: grid; gap: 0.55rem; justify-items: start; }
+.progress-link {
+    color: var(--text-2);
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.progress-link:hover { color: var(--text); text-decoration: underline; }
