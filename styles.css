@@ -22,6 +22,9 @@
     --dbms: #3cc4b0;
     --java: #f0a43a;
     --dsa: #a98bff;
+    --hld: #5aa9f5;
+    --lld: #f07a8c;
+    --springboot: #6cc070;
     --other: #8fa3d8;
 
     --accent: var(--other);
@@ -54,12 +57,18 @@
     --dbms: #0f8a78;
     --java: #b86b00;
     --dsa: #6a45d9;
+    --hld: #1f6fc4;
+    --lld: #c23a52;
+    --springboot: #2f8a3a;
     --other: #4a5f9e;
 }
 
 body[data-subject="dbms"] { --accent: var(--dbms); }
 body[data-subject="java"] { --accent: var(--java); }
 body[data-subject="dsa"]  { --accent: var(--dsa); }
+body[data-subject="hld"]  { --accent: var(--hld); }
+body[data-subject="lld"]  { --accent: var(--lld); }
+body[data-subject="springboot"] { --accent: var(--springboot); }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -160,6 +169,7 @@ kbd {
 
 .subject-tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.25rem;
     padding: 0.25rem;
     background: var(--bg);
@@ -168,7 +178,9 @@ kbd {
 }
 
 .subject-tab {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
