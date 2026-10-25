@@ -100,6 +100,28 @@
         "No debouncing or coalescing of rapid price changes per product; daily-cap state location never specified",
         "Pacing: requirements and NFRs took about 30 of 50 minutes, so the high-level design and deep dive barely happened"
       ]
+    },
+    {
+      "date": "2026-10-25",
+      "area": "lang",
+      "score": 5.0,
+      "title": "Quick quiz: SOLID principles applied to service design",
+      "source": "Java Depth Interviewer",
+      "strengths": [
+        "Spotted the broken principle correctly in all 5 scenarios",
+        "Found SRP responsibilities by their dependencies (mail client, S3, PDF logic)",
+        "Reached Strategy pattern with a Map<Type, Strategy> lookup for OCP",
+        "Split the fat ReportGenerator into capability interfaces on your own",
+        "Explained DIP as which way the dependency arrow points"
+      ],
+      "gaps": [
+        "Answers stop at the definition: say the concrete outcome first (Square area is 16, the assert fails) and then name the principle",
+        "OCP risk was vague: missed regression risk to working channels, scattered switches falling into default, merge conflicts",
+        "Could not apply DIP fix to KafkaTemplate: domain-owned OrderEventPublisher with publish(OrderPlaced), Kafka adapter in infrastructure",
+        "Missed that emailReport is delivery, not formatting (SRP inside ISP); one ReportFormatter strategy beats one interface per format",
+        "First design injected a strategy into the Order entity; entities are not Spring beans",
+        "Filler wording: 'not clean code', 'so yeah', 'which is not a good thing' instead of stating the consequence"
+      ]
     }
   ]
 }
