@@ -266,7 +266,7 @@ function initializeSubjectTabs() {
 }
 
 function subjectColorVar(subjectId) {
-    return ['dbms', 'java', 'dsa'].includes(subjectId) ? subjectId : 'other';
+    return ['dbms', 'java', 'dsa', 'hld', 'lld', 'springboot'].includes(subjectId) ? subjectId : 'other';
 }
 
 function setSubjectChrome(subjectId) {
