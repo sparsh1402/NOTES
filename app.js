@@ -138,9 +138,7 @@ const notesData = {
         icon: '🔧',
         sections: {
             'design-principles': [
-                // Add your LLD notes here
-                // Example: { id: 'lld-01', title: 'Design Principles', file: 'notes/lld/01_Design_Principles.md' }
-                // When you add notes, create a 'lld' folder inside 'notes' and add your markdown files there
+                { id: 'lld-01', title: 'SOLID Principles (Applied to a Spring Boot Service)', file: 'notes/lld/01_SOLID_Principles.md' }
             ]
         }
     }
