@@ -73,6 +73,7 @@ const notesData = {
                 { id: 'java-21', title: 'Java Queue, PriorityQueue, Comparator, and Comparable', file: 'notes/java/21_Java_Queue_PriorityQueue_Comparator_Comparable.md' },
                 { id: 'java-22', title: 'Java Deque, List Implementations', file: 'notes/java/22_Java_Deque_List_Implementations.md' },
                 { id: 'java-23', title: 'Java Map and HashMap Internals', file: 'notes/java/23_Java_Map_HashMap_Internals.md' },
+                { id: 'java-42', title: 'HashMap Deep Dive: Hashing, Resize and Treeification', file: 'notes/java/42_HashMap_Deep_Dive_Hashing_Resize_Treeify.md' },
                 { id: 'java-24', title: 'Java LinkedHashMap and TreeMap', file: 'notes/java/24_Java_LinkedHashMap_TreeMap.md' },
                 { id: 'java-25', title: 'Java Set Implementations', file: 'notes/java/25_Java_Set_Implementations.md' },
                 { id: 'java-26', title: 'Java Streams', file: 'notes/java/26_Java_Streams.md' }
