@@ -108,6 +108,9 @@ const notesData = {
                 { id: 'dsa-01', title: 'Two Sum', file: 'notes/dsa/01_Two_Sum.md', date: '2026-10-23' },
                 { id: 'dsa-02', title: 'Product of Array Except Self', file: 'notes/dsa/02_Product_of_Array_Except_Self.md', date: '2026-10-23' },
                 { id: 'dsa-03', title: 'Subarray Sum Equals K', file: 'notes/dsa/03_Subarray_Sum_Equals_K.md', date: '2026-10-24' }
+            ],
+            'two-pointers': [
+                { id: 'dsa-04', title: '3Sum', file: 'notes/dsa/04_3Sum.md', date: '2026-11-04' }
             ]
         }
     },

@@ -129,6 +129,9 @@ Short revision notes for solved interview problems: pattern, core steps, key ins
 - [Product of Array Except Self](./notes/dsa/02_Product_of_Array_Except_Self.md) - Prefix × suffix products without division, O(1) extra space
 - [Subarray Sum Equals K](./notes/dsa/03_Subarray_Sum_Equals_K.md) - Prefix-sum counts in a hash map, works with negatives, O(n)
 
+#### Two Pointers
+- [3Sum](./notes/dsa/04_3Sum.md) - Sort, fix one number, two pointers on the rest; skip duplicates without a set, O(n²)
+
 *More topics will be added as course transcripts are processed.*
 
 ## 🚀 How to Use
@@ -235,7 +238,7 @@ Or manually enable GitHub Pages:
   - Collections Framework (7 topics)
   - Threading and Concurrency (9 topics)
   - Modern Java Features (6 topics)
-- **DSA Notes:** 3 problems (Arrays & Hashing)
+- **DSA Notes:** 4 problems (Arrays & Hashing, Two Pointers)
 
 ## 🤝 Contributing
 
