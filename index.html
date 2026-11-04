@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Study Notes · DBMS, Java, DSA, HLD</title>
-    <meta name="description" content="Study notes on DBMS, Java, DSA and HLD for interview preparation.">
+    <title>Study Notes · DBMS, Java, DSA, HLD, LLD</title>
+    <meta name="description" content="Interview prep notes on DBMS, Java, DSA, system design and low-level design, written to revise from.">
     <script>
         try {
             document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'dark');
@@ -12,57 +12,72 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&display=swap" rel="stylesheet">
-    <link id="hljsTheme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link id="hljsTheme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
     <style>[hidden]{display:none !important}</style>
-    <link rel="stylesheet" href="styles.css?v=20261025b">
+    <link rel="stylesheet" href="styles.css?v=20261104a">
 </head>
-<body>
+<body data-view="home">
     <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
-    <div class="app">
-        <aside class="sidebar" id="sidebar" aria-label="Notes navigation">
-            <div class="sidebar-head">
-                <a class="brand" href="#" id="brandLink">Study Notes</a>
-                <p class="brand-sub" id="subjectDescription"></p>
-                <div class="subject-tabs" id="subjectTabs" role="tablist" aria-label="Subjects"></div>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+            <a class="brand" href="#" id="brandLink">
+                <svg class="brand-mark" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg>
+                <span>Study Notes</span>
+            </a>
+            <nav class="topnav" aria-label="Main">
+                <div class="dropdown" id="topicsMenu">
+                    <button class="topnav-link" id="topicsBtn" type="button" aria-expanded="false" aria-controls="topicsList">
+                        Topics
+                        <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="dropdown-panel" id="topicsList" hidden></div>
+                </div>
+                <a class="topnav-link" href="progress/">Progress</a>
+            </nav>
+            <div class="topbar-actions">
+                <button class="search-trigger" id="searchBtn" type="button" aria-label="Search notes">
+                    <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    <span class="search-trigger-text">Search</span>
+                    <kbd>Ctrl K</kbd>
+                </button>
+                <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to light theme" title="Switch theme">
+                    <svg class="icon-sun" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                </button>
             </div>
-            <nav class="nav-menu" id="navMenu"></nav>
+        </div>
+    </header>
+
+    <div class="layout">
+        <aside class="sidebar" id="sidebar" aria-label="All notes">
+            <div class="sidebar-label">All notes</div>
+            <nav class="tree" id="navMenu"></nav>
             <div class="sidebar-foot">
-                <a class="progress-link" href="progress/">SDE-2 readiness dashboard &rarr;</a>
-                <button class="btn-quiet" id="contactBtn" type="button">Send feedback</button>
+                <a class="side-link" href="progress/">SDE-2 readiness dashboard &rarr;</a>
+                <button class="side-link" id="contactBtn" type="button">Send feedback</button>
             </div>
         </aside>
         <div class="scrim" id="scrim" hidden></div>
 
-        <div class="main">
-            <header class="topbar">
-                <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                </button>
-                <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
-                <button class="search-trigger" id="searchBtn" type="button" aria-label="Search notes">
-                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                    <span class="search-trigger-text">Search notes</span>
-                    <kbd>Ctrl K</kbd>
-                </button>
-                <button class="icon-btn" id="printBtn" type="button" aria-label="Print this note" title="Print">
-                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M7 9V4h10v5M7 17H5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2M7 14h10v6H7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-                </button>
-                <button class="icon-btn" id="themeBtn" type="button" aria-label="Switch to light theme" title="Switch theme">
-                    <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-                </button>
-            </header>
+        <main class="content" id="content" tabindex="-1"></main>
 
-            <main class="content" id="content" tabindex="-1"></main>
-
-            <footer class="pager" id="pager" hidden>
-                <button class="pager-link prev" id="prevBtn" type="button"><span class="pager-dir">Previous</span><span class="pager-title" id="prevTitle"></span></button>
-                <button class="pager-link next" id="nextBtn" type="button"><span class="pager-dir">Next</span><span class="pager-title" id="nextTitle"></span></button>
-            </footer>
-        </div>
+        <aside class="toc" id="toc" aria-label="On this page" hidden>
+            <div class="sidebar-label">On this page</div>
+            <ol class="toc-list" id="tocList"></ol>
+        </aside>
     </div>
+
+    <footer class="site-foot" id="siteFoot">
+        <div class="site-foot-inner">
+            <span>Study Notes · written while preparing for SDE-2 interviews</span>
+            <span><a href="progress/">Progress</a> · <button class="link-btn" id="contactBtn2" type="button">Feedback</button></span>
+        </div>
+    </footer>
 
     <!-- Search palette -->
     <div class="palette" id="palette" hidden>
@@ -107,7 +122,7 @@
                 </div>
                 <input type="checkbox" id="contactHoneypot" name="botcheck" hidden>
                 <div class="form-actions">
-                    <button type="submit" class="btn-primary" id="submitBtn">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
                         <span class="btn-text">Send message</span>
                         <span class="btn-loader" hidden>Sending…</span>
                     </button>
@@ -117,9 +132,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
-    <script src="app.js?v=20261030a"></script>
+    <script src="app.js?v=20261104a"></script>
 </body>
 </html>
