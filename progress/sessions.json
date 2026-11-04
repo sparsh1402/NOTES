@@ -122,6 +122,25 @@
         "First design injected a strategy into the Order entity; entities are not Spring beans",
         "Filler wording: 'not clean code', 'so yeah', 'which is not a good thing' instead of stating the consequence"
       ]
+    },
+    {
+      "date": "2026-11-04",
+      "area": "dsa",
+      "score": 5.5,
+      "title": "Mock round: 3Sum (two pointers, duplicates, medium)",
+      "source": "DSA Interview Simulator",
+      "strengths": [
+        "Reached sort + fix i + two pointers with no hints",
+        "Handled duplicates for all three of i, j, k with no set; correct code on the first submission (508 tests)",
+        "Finished in about 20 minutes, inside the 25-minute bar",
+        "Correct dry run of [-2,0,0,2,2] and a correct 4Sum extension at O(n^3)"
+      ],
+      "gaps": [
+        "Named edge cases only after being asked three times: list two from the constraints before discussing any approach",
+        "Multiplied the sort into time complexity (n^2 log n) before correcting to n^2 + n log n",
+        "Said both constant and O(n) for space; did not account for the sort's O(log n) stack until told",
+        "Did not mention that sorting modifies the caller's array, or the nums[i] > 0 early exit"
+      ]
     }
   ]
 }
