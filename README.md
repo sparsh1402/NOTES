@@ -12,14 +12,23 @@ Visit the live website: **[https://sparsh1402.github.io/NOTES/](https://sparsh14
 
 ## ✨ Features
 
+- 🏠 **Home page** - recently added notes, topic cards, a "Latest" list and the last mock-round score
+- 🗂️ **Topic tree** - every subject and section in a collapsible side menu
+- 📑 **On this page** - a contents list beside each note that follows your scroll position
 - 🔍 **Search** - press `Ctrl K` (or `/`) to find any note across all subjects
-- 🎨 **Subject colours** - DBMS, Java and DSA each have their own colour, so you always know where you are
-- 📖 **Comfortable reading** - serif body text in a 70-character column, reading progress bar, previous/next links
-- 💻 **Code blocks** - syntax highlighting with a one-click copy button
+- 📖 **Comfortable reading** - serif text in a ~70-character column, reading progress bar, previous/next links
+- 💻 **Code blocks** - syntax highlighting, language label and a one-click copy button
 - 🌙 **Dark/Light theme** - remembered between visits
 - 📱 **Responsive** - slide-out navigation on phones
 - 🖨️ **Print friendly** - clean print layout
 - 🔗 **Direct links** - every note and section has its own URL
+
+## ➕ Adding a note
+
+1. Put the Markdown file in `notes/<subject>/`, starting with a `# Title` line. The first paragraph after the title is shown as the note's summary.
+2. Add an entry to `notesData` in `app.js`, including the date it was added:
+   `{ id: 'dsa-04', title: 'Longest Substring Without Repeating Characters', file: 'notes/dsa/04_Longest_Substring.md', date: '2026-11-05' }`
+   The date orders the home page's "Latest" list; notes without one are listed last.
 
 ## 📚 Subjects Covered
 
