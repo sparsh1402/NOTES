@@ -621,6 +621,20 @@ body[data-view="note"] .site-foot, body[data-view="subject"] .site-foot { displa
 .form-message.success { background: var(--accent-soft); color: var(--accent); }
 .form-message.error { background: rgba(238, 110, 110, .12); color: #ee8080; }
 
+/* ---------- collapsible sidebar (desktop) ---------- */
+@media (min-width: 901px) {
+    body[data-view="note"] .menu-btn,
+    body[data-view="subject"] .menu-btn { display: inline-grid; }
+    body.side-collapsed[data-view="note"] .sidebar,
+    body.side-collapsed[data-view="subject"] .sidebar { display: none; }
+    body.side-collapsed[data-view="note"] .layout { grid-template-columns: minmax(0, 1fr) var(--toc-w); }
+    body.side-collapsed[data-view="subject"] .layout { grid-template-columns: minmax(0, 1fr); }
+    body.side-collapsed .menu-btn { color: var(--text-3); }
+}
+@media (min-width: 901px) and (max-width: 1240px) {
+    body.side-collapsed[data-view="note"] .layout { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* ---------- responsive ---------- */
 @media (max-width: 1240px) {
     body[data-view="note"] .layout { grid-template-columns: var(--side-w) minmax(0, 1fr); }

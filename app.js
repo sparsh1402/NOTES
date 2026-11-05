@@ -446,14 +446,44 @@ function revealInTree(subjectId, sectionId) {
 }
 
 function initializeSidebarToggle() {
+    const desktop = window.matchMedia('(min-width: 901px)');
+    const btn = $('menuBtn');
+
+    const syncButton = () => {
+        if (desktop.matches) {
+            const shown = !document.body.classList.contains('side-collapsed');
+            btn.setAttribute('aria-expanded', String(shown));
+            btn.setAttribute('aria-label', shown ? 'Hide sidebar' : 'Show sidebar');
+            btn.title = shown ? 'Hide sidebar' : 'Show sidebar';
+        } else {
+            const shown = document.body.classList.contains('nav-open');
+            btn.setAttribute('aria-expanded', String(shown));
+            btn.setAttribute('aria-label', shown ? 'Close navigation' : 'Open navigation');
+            btn.title = '';
+        }
+    };
     const open = (state) => {
         document.body.classList.toggle('nav-open', state);
         $('scrim').hidden = !state;
-        $('menuBtn').setAttribute('aria-expanded', String(state));
+        syncButton();
     };
-    $('menuBtn').addEventListener('click', () => {
-        // on the home page the tree is hidden; show it as a drawer anyway
-        open(!document.body.classList.contains('nav-open'));
+    const setCollapsed = (state) => {
+        document.body.classList.toggle('side-collapsed', state);
+        try { localStorage.setItem('sideCollapsed', state ? '1' : '0'); } catch (e) {}
+        syncButton();
+    };
+
+    try { document.body.classList.toggle('side-collapsed', localStorage.getItem('sideCollapsed') === '1'); } catch (e) {}
+    syncButton();
+    desktop.addEventListener('change', () => { open(false); });
+
+    btn.addEventListener('click', () => {
+        if (desktop.matches) {
+            setCollapsed(!document.body.classList.contains('side-collapsed'));
+        } else {
+            // on the home page the tree is hidden; show it as a drawer anyway
+            open(!document.body.classList.contains('nav-open'));
+        }
     });
     $('scrim').addEventListener('click', () => open(false));
     $('navMenu').addEventListener('click', (e) => { if (e.target.closest('.nav-link')) open(false); });
